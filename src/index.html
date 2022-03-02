@@ -12,31 +12,40 @@
 <body>
     <div class="border">
 
-        <div class="row block border" id="banner">
-            <img src="" alt="header image">
+        <div class="height">
+            <div class="row block border width100" id="banner">
+                jotain?
+            </div>
+
+            <div class="row flex justify height">
+
+                <section class=" col border width33">
+                    <div class=" row border">
+                        <a class="weatherwidget-io" href="https://forecast7.com/en/60d2124d66/espoo/"
+                            data-label_1="ESPOO" data-label_2="WEATHER" data-icons="Climacons Animated"
+                            data-mode="Current" data-theme="retro-sky">ESPOO WEATHER</a>
+                    </div>
+                    <div class=" row border">hsl</div>
+                </section>
+
+                <section class="flex row border">
+                    <div class="col">
+                        <div>Lounaslista Karamalmi</div>
+                        <div class="" id="fazer"></div>
+                    </div>
+                </section>
+
+                <section class="flex col border width33">
+                    <div class="flex row border width100">mainos</div>
+
+                </section>
+
+            </div>
+
+            <div class="row block border width100">
+                jotain?
+            </div>
         </div>
-
-        <div class="row flex justify height">
-
-            <section class="flex col border">
-                <div class="flex row border">Sää</div>
-                <div class="flex row border">hsl</div>
-            </section>
-
-            <section class="flex row border">
-                <div class="col">
-                    <div>Lounaslista Karamalmi</div>
-                    <div class="" id="fazer"></div>
-                </div>
-            </section>
-
-            <section class="flex col border">
-                <div class="flex row border">mainos</div>
-                <div class="flex row border">jotain</div>
-            </section>
-
-        </div>
-
         <footer class="scroll-left">
             <p>Metropolissa tartunnan jäljityksen tukena toiminut koronapäivystyspuhelin ja koronapäivystyksen
                 sähköposti lakkaa 14.2. alkaen. Viranomaiset ovat lopettaneet 10.1.2022 jäljitystyön oppilaitosten
@@ -45,5 +54,8 @@
 
     </div>
 </body>
+<script>
+    !function (d, s, id) { var js, fjs = d.getElementsByTagName(s)[0]; if (!d.getElementById(id)) { js = d.createElement(s); js.id = id; js.src = 'https://weatherwidget.io/js/widget.min.js'; fjs.parentNode.insertBefore(js, fjs); } }(document, 'script', 'weatherwidget-io-js');
+</script>
 
 </html>

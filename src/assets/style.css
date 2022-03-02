@@ -24,7 +24,7 @@ body{
 }
 
 .block{
-  display: block;
+  display: inline-block;
 }
 
 .border{
@@ -32,11 +32,19 @@ body{
 }
 
 .justify{
-justify-content: space-evenly;
+justify-content:stretch;
 }
 
 .height{
-  height: 100%;
+  height: 90vh;
+}
+
+.width33{
+  width: 33%;
+}
+
+.width100{
+  width: 100%;
 }
 
 
