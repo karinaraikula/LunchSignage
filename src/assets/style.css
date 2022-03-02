@@ -1,65 +1,56 @@
-* {
-  padding: 0;
+*{
   margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
-
-.item-a {
-  grid-area: header;
-  border: 1px solid black;
-  height: min-content;
-}
-
-.item-b {
-  grid-area: main;
-  border: 1px solid black;
-
-}
-
-.item-c {
-  grid-area: sidebar;
-  border: 1px solid black;
-}
-
-.item-d {
-  grid-area: aside;
-  height: auto;
-  border: 1px solid black;
-}
-
-.item-e {
-  grid-area: footer;
-  border: 1px solid black;
-}
-
-
-.container {
+body{
   height: 100vh;
-  width: 100%;
-  border: 1px solid black;
-  display: grid;
-  grid-template-rows: auto;
-  grid-template-areas:
-    "header header header header header"
-
-    "aside main main main sidebar"
-    "aside main main main sidebar"
-    "footer footer footer footer footer"
-  ;
 }
+
+#banner{
+  width: 100%;
+}
+
+.flex{
+  display: flex;
+}
+
+.row{
+  flex-direction: row;
+}
+
+.col{
+  flex-direction: col;
+}
+
+.block{
+  display: block;
+}
+
+.border{
+  border: 1px solid black;
+}
+
+.justify{
+justify-content: space-evenly;
+}
+
+.height{
+  height: 100%;
+}
+
+
 
 .scroll-left {
   min-height: 90px;
   height: inherit;
   overflow: hidden;
   position: absolute;
+  bottom: 0;
   background: rgb(228, 93, 43);
   color: #ccc;
   font-family: Verdana, Geneva, Tahoma, sans-serif;
   font-size: 40px;
-}
-
-#banner{
-  width: 1200px;
 }
 
 .scroll-left p {
