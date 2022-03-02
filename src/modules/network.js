@@ -1,19 +1,24 @@
 /**
- * fetch (GET) JSON data from APIs
+ * fetch JSON data from APIs
  * @param {string} url  - api endpoint url
+ * @param {Object} options - request options
  * @param {string} useProxy  - optional proxy server
- * 
+ *
+ * @returns {Object} response json data
  */
-const fetchData = async (url, useProxy) => {
+const fetchData = async (url, options = {}, useProxy) => {
+  //Construct new url if proxy in use
     if (useProxy === 'allorigins') {
         url = `https://api.allorigins.win/get?url=${encodeURIComponent(url)}`;
     } else if (useProxy === 'fazer-php') {
         let subPath = url.split(`menu/`)[1];
         url = `https://users.metropolia.fi/~karinara/Jakso3/proxy/proxy-server/fazer-proxy.php/${subPath}`;
     }
+
+
     let jsonData;
     try {
-        const response = await fetch(url);
+        const response = await fetch(url, options);
         if (!response.ok) {
             throw new Error(`HTTP ${response.status} - ${response.statusText}`);
         }

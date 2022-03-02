@@ -1,4 +1,5 @@
 import FazerData from './modules/fazer-data';
+import HSLData, { apiUrl } from './modules/hsl-data';
 import { fetchData } from './modules/network';
 import { getTodayIndex } from './modules/tools';
 
@@ -78,7 +79,21 @@ const init = () => {
   });
 
   document.querySelector('#switch-lang').addEventListener('click', changeLanguage);
-  
+
+  //HSL data
+  fetchData(HSLData.apiUrl, {
+    method: 'POST',
+    headers: {'Content-Type': 'application/graphql'},
+    body: HSLData.getQueryForNextRidesByStopId(2132207)
+  }).then(response => {
+    console.log('hsl data', response.data.stop.stoptimesWithoutPatterns[0]);
+    const stop = response.data.stop;
+    let time = new Date((stop.stoptimesWithoutPatterns[0].realtimeArrival + stop.stoptimesWithoutPatterns[0].serviceDay) * 1000);
+    document.querySelector('#hsl-data').innerHTML = `<p>
+    Seuraava dösä pysäkiltä ${stop.name} on ${stop.stoptimesWithoutPatterns[0].headsign} ja saapuu
+    ${time}
+    </p>`;
+  });
 };
 
 init();
