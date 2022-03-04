@@ -1,6 +1,7 @@
 import FazerData from './modules/fazer-data';
 import { fetchData } from './modules/network';
 import { getTodayIndex } from './modules/tools';
+import HSLData from './modules/hsl-data';
 
 let lang = 'fi';
 
@@ -77,7 +78,20 @@ const init = () => {
     showMenu('fazer', courses);
   });
 
-  document.querySelector('#switch-lang').addEventListener('click', changeLanguage);
+  fetchData(HSLData.apiUrl, {
+    method: 'POST',
+    headers: {'Content-Type': 'application/graphql'},
+    body: HSLData.getQueryForNextRidesByStopId(2132207)
+  }).then(response => {
+    // TODO: create separate render HSL data functions (in HSLData module maybe?)
+    console.log('hsl data', response.data.stop.stoptimesWithoutPatterns[0]);
+    const stop = response.data.stop;
+    let time = new Date((stop.stoptimesWithoutPatterns[0].realtimeArrival + stop.stoptimesWithoutPatterns[0].serviceDay) * 1000);
+    document.querySelector('#hsl-data').innerHTML = `<p>
+      Seuraava dösä pysäkiltä ${stop.name} on ${stop.stoptimesWithoutPatterns[0].headsign} ja saapuu
+      ${time}
+    </p>`;
+  });
   
 };
 

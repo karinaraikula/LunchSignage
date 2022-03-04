@@ -105,3 +105,32 @@ li {
   font-size: 1.5em;
   color: #A9A9A9;
 }
+.weather {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  height: auto;
+}
+
+.lampotila {
+  text-align: center;
+  margin: 0 auto;
+}
+
+.title {
+  display: flex;
+  flex-flow: row;
+  justify-content: center;
+  align-items: center;
+}
+
+.weatherikoni{
+  width: 300px;
+  height: 128px;
+  margin: 0 auto;
+
+}
+.weatherikoni img{
+  display: block;
+  margin: 0 auto;
+}
