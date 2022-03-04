@@ -18,7 +18,6 @@ const parseDayMenu = (lunchMenus, dayOfWeek) => {
     return name ? name + ': ' + meals : meals;
   });
   return dayMenu;
-
 };
 
 /*

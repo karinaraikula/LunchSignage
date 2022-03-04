@@ -1,61 +1,64 @@
-*{
+* {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-}
-body{
-  height: 100vh;
+  font-family: 'Nunito Sans', sans-serif;
 }
 
-#banner{
+body {
+  height: 100vh;
+  background-color: #71797E;
+}
+
+#banner {
   width: 100%;
 }
 
-.flex{
+.flex {
   display: flex;
 }
 
-.row{
+.row {
   flex-direction: row;
 }
 
-.col{
+.col {
   flex-direction: col;
 }
 
-.block{
+.block {
   display: inline-block;
 }
 
-.border{
+.border {
   border: 1px solid black;
 }
 
-.justify{
-justify-content:stretch;
+.justify {
+  justify-content: stretch;
 }
 
-.height{
+.height {
   height: 90vh;
 }
 
-.width33{
+.width33 {
   width: 33%;
 }
 
-.width100{
+.width100 {
   width: 100%;
 }
 
 
 
 .scroll-left {
-  min-height: 90px;
+  min-height: 10vh;
   height: inherit;
   overflow: hidden;
   position: absolute;
   bottom: 0;
-  background: rgb(228, 93, 43);
+  background: linear-gradient(to right, #f12711, #f5af19);
   color: #ccc;
   font-family: Verdana, Geneva, Tahoma, sans-serif;
   font-size: 40px;
@@ -67,6 +70,7 @@ justify-content:stretch;
   margin: 0;
   transform: translateX(10%);
   animation: scroll-left 60s linear infinite;
+  background-color: inherit;
 }
 
 @keyframes scroll-left {
@@ -77,4 +81,27 @@ justify-content:stretch;
   100% {
     transform: translateX(-100%);
   }
+}
+
+#fazer {
+  padding: 5%;
+  background: linear-gradient(to right, #000428, #004e92);
+
+}
+
+.lounas {
+  color: #A9A9A9;
+}
+
+h1 {
+  background: linear-gradient(to right, #000428, #004e92);
+  padding: 5% 5% 0 5%;
+  font-size: 2em;
+}
+
+li {
+  list-style-type: none;
+  margin: 15px 0px;
+  font-size: 1.8em;
+  color: #A9A9A9;
 }
