@@ -96,12 +96,12 @@ body {
 h1 {
   background: linear-gradient(to right, #000428, #004e92);
   padding: 5% 5% 0 5%;
-  font-size: 2em;
+  font-size: 1.6em;
 }
 
 li {
   list-style-type: none;
   margin: 15px 0px;
-  font-size: 1.8em;
+  font-size: 1.5em;
   color: #A9A9A9;
 }
