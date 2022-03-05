@@ -61,8 +61,31 @@ const renderSortedMenu = () => {
   showMenu('fazer', sortCourses(FazerData.getDailyMenu(lang)));
 };
 
+/**
+ * Display pages/vies in carousel mode
+ *
+ * @param {number} activeView - view index to be displayed
+ * @param {number} duration - seconds between page updated
+ */
+ const createViewCarousel = (activeView, duration) => {
+  const views = document.querySelectorAll('section');
+  for (const view of views) {
+    view.style.display = 'none';
+  }
+  if (activeView === views.length) {
+    activeView = 0;
+  }
+  views[activeView].style.display = 'block';
+  setTimeout(() => {
+    createViewCarousel(activeView + 1, duration);
+  }, duration * 1000);
+
+
+};
 
 const init = () => {
+  createViewCarousel(0, 10);
+
   //showMenu('sodexo', SodexoData.getDailyMenu('fi'));
   //showMenu('fazer', FazerData.getDailyMenu('fi'));
 /*
@@ -92,7 +115,7 @@ const init = () => {
       ${time}
     </p>`;
   });
-  
+
 };
 
 init();
