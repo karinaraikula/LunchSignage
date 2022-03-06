@@ -119,11 +119,11 @@ li {
   display: flex;
   justify-content: space-between;
   flex-wrap: wrap;
-  
+
 }
 .date-container{
   font-weight: 100;
-  
+
 }
 .date-container .time{
   font-size: 70px;
@@ -171,3 +171,10 @@ li {
   display: flex;
   width: 200px;
 }
+
+/*HSL leiska*/
+
+#hsl-data{
+  background-color: rgb(0, 96, 163);
+}
+
