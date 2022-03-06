@@ -1,62 +1,68 @@
-'use strict';
-//const ikoniElementtiRuka = document.querySelector('.weatherikoni');
-const lampotilaElementtiRuka = document.querySelector('.lampotila p');
+const timeEl = document.getElementById('time');
+const dateEl = document.getElementById('date');
+const currentWeatherItemsEl = document.getElementById('current-weather-items');
+const timezone = document.getElementById('time-zone');
+const countryEl = document.getElementById('country');
+const weatherForecastEl = document.getElementById('weather-forecast');
+const currentTempEl = document.getElementById('current-temp');
 
 
+const days = ['Sunnuntai', 'Maanantai', 'Tiistai', 'Keskiviikko', 'Torstai', 'Perjantai', 'Lauantai']
+const months = ['Tammikuuta', 'Helmikuuta', 'Maaliskuuta', 'Huhtikuuta', 'Toukokuuta', 'Kesäkuuta', 'Heinäkuuta', 'Elokuuta', 'Syyskuuta', 'Lokakuuta', 'Marraskuuta', 'Joulukuuta'];
 
-// Rukan koordinaatit
-const coords = [
-  66.1690081362218,
-  29.16642564990237,
-  67.80417221848137,
-  24.808682895041365];
-const rukaLat = coords[0];
-const rukaLng = coords[1];
+const API_KEY ='fcaad45fa4028c3aa51faecc8f25d3ab';
 
-
-const weather = {};
-weather.temperature = {
-  unit: 'celcius',  // Asetetaan lÃ¤mpÃ¶tilan mittausyksikkÃ¶ celciukseksi
-};
-
-const kelvinit = 273;
-const avain = '9025454b3f1c8837bb18596e196c64b0';
+setInterval(() => {
+    const time = new Date();
+    const month = time.getMonth();
+    const date = time.getDate();
+    const day = time.getDay();
+    const hour = time.getHours();
+    let minutes = time.getMinutes();
+    minutes = minutes <= 9 ? '0' + minutes : minutes;
 
 
-// Asetetaan sijainti josta lÃ¤mpÃ¶tila haetaan. 
-function setPosition() {
+    timeEl.innerHTML = hour + '.' + minutes;
 
-    let latitude = rukaLat;
-    let longitude = rukaLng;
-    getWeather(latitude, longitude);
-  } 
+    dateEl.innerHTML = days[day] + ', ' + date+ '. päivä ' + months[month]
 
+}, 1000);
 
-// Haetaan sÃ¤Ã¤ Openweathermap API:lla
-function getWeather(latitude, longitude) {
-  let api = `https://api.openweathermap.org/data/2.5/weather?lat=${latitude}&lon=${longitude}&appid=${avain}`;
+getWeatherData();
 
-  fetch(api).then(function(response) {
-    let data = response.json();
-    console.log(data);
-    return data;
+function getWeatherData () {
+    navigator.geolocation.getCurrentPosition((success) => {
+        
+        let {latitude, longitude } = success.coords;
 
-  }).then(function(data) {
-    weather.temperature.value = Math.floor(data.main.temp - kelvinit);
-    weather.iconId = data.weather[0].icon;
-    weather.city = data.name;
-    weather.country = data.sys.country;
-  }).then(function() {
-    if (latitude === rukaLat) {
-      displayWeather();
-    } 
-  });
+        fetch(`https://api.openweathermap.org/data/2.5/onecall?lat=${latitude}&lon=${longitude}&exclude=hourly,minutely&units=metric&appid=${API_KEY}`)
+        .then(res => res.json())
+        .then(data => {
+        
+        console.log(data)
+        showWeatherData(data);
+        })
+
+    })
 }
 
-// Tulostetaan sÃ¤Ã¤ HTML:Ã¤Ã¤n
-function displayWeather() {
 
-    //ikoniElementtiRuka.innerHTML = `<img src="images/icons/${weather.iconId}.png"/>`;
-    lampotilaElementtiRuka.innerHTML = `<b>${weather.temperature.value}Â°<span>C</span></b>`;
+function showWeatherData (data){
 
+    timezone.innerHTML = data.timezone;
+    countryEl.innerHTML = data.lat + 'N ' + data.lon+'E';
+
+    let otherDayForcast = ''
+    data.daily.forEach((day, idx) => {
+        if(idx == 0){
+            currentWeatherItemsEl.innerHTML = `
+            <img src="http://openweathermap.org/img/wn//${day.weather[0].icon}@4x.png" alt="weather icon" class="w-icon">
+            <div class="other">
+                <div class="temp">Päivällä  ${Math.floor(day.temp.day)}&#176;C</div>
+                <div class="temp">Yöllä  ${Math.floor(day.temp.night)}&#176;C</div>
+            </div>
+            
+            `
+        }
+    })
 }

@@ -24,10 +24,24 @@
             <div class="row flex justify height">
 
                 <section class=" col border width33">
+                    <!--SÄÄ-->
                     <div class=" row border weather">
-                        <div class="weatherikoni"> <img src="" alt=""></div>
-                        <div class="lampotila">
-                            <p></p>
+                        <div class="current-info">
+
+                            <div class="date-container">
+                                <div class="time" id="time">
+                                </div>
+                                <div class="date" id="date">
+                                </div>
+                                <div class="others" id="current-weather-items">
+                                </div>
+                            </div>
+                
+                            <div class="place-container">
+                                <div class="time-zone" id="time-zone"></div>
+                                <div id="country" class="country"></div>
+                                <div id="city" class="city">tähän kaupunki</div>
+                            </div>
                         </div>
                     </div>
         
@@ -63,6 +77,8 @@
 
     </div>
 </body>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment.min.js" integrity="sha512-qTXRIMyZIFb8iQcfjXWCO8+M5Tbc38Qi5WzdPOYZHIlZpzBHG3L3by84BBBOiRGiEb7KKtAOAs5qYdUiZiQNNQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+<script src="weather.js"></script>
 <script>
     !function (d, s, id) { var js, fjs = d.getElementsByTagName(s)[0]; if (!d.getElementById(id)) { js = d.createElement(s); js.id = id; js.src = 'https://weatherwidget.io/js/widget.min.js'; fjs.parentNode.insertBefore(js, fjs); } }(document, 'script', 'weatherwidget-io-js');
 </script>

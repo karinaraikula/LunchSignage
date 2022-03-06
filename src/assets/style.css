@@ -7,7 +7,7 @@
 
 body {
   height: 100vh;
-  background-color: #71797E;
+  background-color: #c7eaff;
 }
 
 #banner {
@@ -105,17 +105,6 @@ li {
   font-size: 1.5em;
   color: #A9A9A9;
 }
-.weather {
-  display: flex;
-  flex-direction: column;
-  width: 100%;
-  height: auto;
-}
-
-.lampotila {
-  text-align: center;
-  margin: 0 auto;
-}
 
 .title {
   display: flex;
@@ -124,13 +113,61 @@ li {
   align-items: center;
 }
 
-.weatherikoni{
-  width: 300px;
-  height: 128px;
-  margin: 0 auto;
+/*SÄÄN ja PVM leiska tästä eteenpäin*/
 
+.current-info{
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  
 }
-.weatherikoni img{
-  display: block;
-  margin: 0 auto;
+.date-container{
+  font-weight: 100;
+  
+}
+.date-container .time{
+  font-size: 70px;
+}
+
+.date-container .date{
+  font-size: 30px;
+}
+
+.place-container{
+  text-align: end;
+}
+
+.place-container .time-zone{
+  font-size: 30px;
+  font-weight: 100;
+}
+
+.place-container .country{
+  font-size: 12px;
+  font-weight: 700;
+}
+
+.place-container .city{
+  font-size: 30px;
+  font-weight: 100;
+}
+
+.current-info .others{
+  display: flex;
+  flex-direction: column;
+  background: rgba(182, 182, 194, 0.6);
+  padding:20px;
+  border-radius: 10px;
+  margin: 10px 0;
+  border: 1px solid #eee;
+}
+
+.current-info .others .weather-item{
+  display: flex;
+  justify-content: space-between;
+}
+
+.w-icon {
+  display: flex;
+  width: 200px;
 }
