@@ -1,64 +1,54 @@
+import SodexoData from './modules/sodexo-data';
 import FazerData from './modules/fazer-data';
 import { fetchData } from './modules/network';
 import { getTodayIndex } from './modules/tools';
-import HSLData from './modules/hsl-data';
 
-let lang = 'fi';
-
-/**
- * Järjestä lista aakkosjärjestyksessä
- */
-const sortCourses = (courses, order = 'asc') => {
-  let sortedMenu = courses.sort();
-  if (order === 'desc') {
-    sortedMenu.reverse();
-  }
-  return sortedMenu;
-};
+let language = 'fi';
 
 /**
- * Lataa menun etusivulle
+ * Renders menu courses on page
  */
-const showMenu = (restaurant, menu) => {
-  const list = document.querySelector('#' + restaurant);
-  list.innerHTML = '';
-  for (const item of menu) {
-    const listItem = document.createElement('li');
-    listItem.textContent = item;
-    list.appendChild(listItem);
+const renderMenu = (data, targetId) => {
+  const ulElement = document.querySelector('#' + targetId);
+  ulElement.innerHTML = '';
+  for (const item of data) {
+    const listElement = document.createElement('li');
+    listElement.textContent = item;
+    ulElement.appendChild(listElement);
   }
 };
 
 /**
- * Satunnainen annos
+ * Toggle between en/fi
  */
-const randomCourse = courses => {
-  const randomIndex = Math.floor(Math.random() * courses.length);
-  return courses[randomIndex];
-};
-const displayRandomCourse = () => {
-  alert('Sodexo: ' + randomCourse(SodexoData.getDailyMenu(lang)) + '\n' + 'Fazer: ' + randomCourse(FazerData.getDailyMenu(lang)));
-};
-
-/**
- * Vaihda kieli
- */
-const changeLanguage = () => {
-  if (lang === 'fi') {
-    lang = 'en';
+const switchLanguage = () => {
+  if (language === 'fi') {
+    language = 'en';
+    console.log('lang is en');
+    renderMenu(SodexoData.title_en, 'sodexo');
+    renderMenu(FazerData.title_en, 'fazer');
   } else {
-    lang = 'fi';
+    language = 'fi';
+    console.log('lang is fi');
+    renderMenu(SodexoData.title_fi, 'sodexo');
+    renderMenu(FazerData.title_fi, 'fazer');
   }
-  showMenu('sodexo', SodexoData.getDailyMenu(lang));
-  showMenu('fazer', FazerData.getDailyMenu(lang));
 };
+const switchRestaurant = () => {
+  let sodexo = document.getElementById("sodexo");
+  let fazer = document.getElementById("fazer");
+  let toiminimi = document.getElementById("toiminimi");
 
-/**
- * Function for showing sorted menu
- */
-const renderSortedMenu = () => {
-  showMenu('sodexo', sortCourses(SodexoData.getDailyMenu(lang)));
-  showMenu('fazer', sortCourses(FazerData.getDailyMenu(lang)));
+  if (sodexo.style.display === "none") {
+    sodexo.style.display = "block";
+    fazer.style.display = "none";
+    toiminimi.innerHTML="Myllypuron lounas:";
+  } else {
+    sodexo.style.display = "none";
+    fazer.style.display = "block";
+    toiminimi.innerHTML="Karamalmin lounas:";
+
+  }
 };
 
 /**
@@ -67,8 +57,8 @@ const renderSortedMenu = () => {
  * @param {number} activeView - view index to be displayed
  * @param {number} duration - seconds between page updated
  */
- const createViewCarousel = (activeView, duration) => {
-  const views = document.querySelectorAll('video');
+const createViewCarousel = (activeView, duration) => {
+  const views = document.querySelectorAll('article');
   for (const view of views) {
     view.style.display = 'none';
   }
@@ -79,8 +69,6 @@ const renderSortedMenu = () => {
   setTimeout(() => {
     createViewCarousel(activeView + 1, duration);
   }, duration * 1000);
-
-
 };
 
 const init = () => {
@@ -88,22 +76,38 @@ const init = () => {
 
   //showMenu('sodexo', SodexoData.getDailyMenu('fi'));
   //showMenu('fazer', FazerData.getDailyMenu('fi'));
-/*
-  fetchData(SodexoData.dataUrlDaily).then(data => {
-    console.log('sodexo', data);
-    const courses = SodexoData.parseDayMenu(data.courses);
-    showMenu('sodexo',courses);
-  });
-*/
+  /*
+    fetchData(SodexoData.dataUrlDaily).then(data => {
+      console.log('sodexo', data);
+      const courses = SodexoData.parseDayMenu(data.courses);
+      showMenu('sodexo',courses);
+    });
+  */
 
   fetchData(FazerData.dataUrlFi, 'fazer-php').then(data => {
     const courses = FazerData.parseDayMenu(data.LunchMenus, getTodayIndex());
-    showMenu('fazer', courses);
+    renderMenu(courses, 'fazer');
   });
+  fetchData(SodexoData.dataUrlDaily).then(data => {
+    console.log('sodexo', data);
+    const courses = SodexoData.parseDayMenu(data.courses);
+    renderMenu(courses, 'sodexo');
+  });
+
+  // Event listeners for buttons
+  /*
+   document.getElementById('switch-lang').addEventListener('click', () => {
+     switchLanguage();
+   });
+   */
+  document.getElementById('switch-rest').addEventListener('click', () => {
+    switchRestaurant();
+  });
+
 
   fetchData(HSLData.apiUrl, {
     method: 'POST',
-    headers: {'Content-Type': 'application/graphql'},
+    headers: { 'Content-Type': 'application/graphql' },
     body: HSLData.getQueryForNextRidesByStopId(2132207)
   }).then(response => {
     // TODO: create separate render HSL data functions (in HSLData module maybe?)

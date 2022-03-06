@@ -82,16 +82,25 @@ body {
     transform: translateX(-100%);
   }
 }
+#sodexo{
+  display: none;
+}
 
-#fazer {
+#fazer, #sodexo {
   padding: 5%;
   background: linear-gradient(to right, #000428, #004e92);
-
+  max-height: 90vh;
+  overflow: hidden;
 }
+
 
 .lounas {
   color: #A9A9A9;
 }
+.carousel{
+  overflow: hidden;
+}
+
 
 h1 {
   background: linear-gradient(to right, #000428, #004e92);
@@ -115,54 +124,56 @@ li {
 
 /*SÄÄN ja PVM leiska tästä eteenpäin*/
 
-.current-info{
+.current-info {
   display: flex;
   justify-content: space-between;
   flex-wrap: wrap;
-  
+
 }
-.date-container{
+
+.date-container {
   font-weight: 100;
-  
+
 }
-.date-container .time{
+
+.date-container .time {
   font-size: 70px;
 }
 
-.date-container .date{
+.date-container .date {
   font-size: 30px;
 }
 
-.place-container{
+.place-container {
   text-align: end;
 }
 
-.place-container .time-zone{
+.place-container .time-zone {
   font-size: 30px;
   font-weight: 100;
 }
 
-.place-container .country{
+.place-container .country {
   font-size: 12px;
   font-weight: 700;
 }
 
-.place-container .city{
+.place-container .city {
   font-size: 30px;
   font-weight: 100;
 }
 
-.current-info .others{
+.current-info .others {
   display: flex;
   flex-direction: column;
   background: rgba(182, 182, 194, 0.6);
-  padding:20px;
+  padding: 20px;
   border-radius: 10px;
   margin: 10px 0;
   border: 1px solid #eee;
 }
 
-.current-info .others .weather-item{
+.current-info .others .weather-item {
   display: flex;
   justify-content: space-between;
 }
