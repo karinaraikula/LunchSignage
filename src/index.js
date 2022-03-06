@@ -68,7 +68,7 @@ const renderSortedMenu = () => {
  * @param {number} duration - seconds between page updated
  */
  const createViewCarousel = (activeView, duration) => {
-  const views = document.selectElementById('mainos');
+  const views = document.querySelectorAll('video');
   for (const view of views) {
     view.style.display = 'none';
   }
