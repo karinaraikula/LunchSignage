@@ -50,27 +50,38 @@
                       <h2>hsl</h2>
 
                     </div>
+                    <button id="switch-rest">vaihda ravintola</button>
+
                 </section>
 
                 <section class="flex row border lounas">
                     <div class="col">
-                        <h1>LOUNAS TÄNÄÄN: </h1>
-                        <div class="" id="fazer"></div>
+                        <h1 id="toiminimi">Karamalmin lounas:</h1>
+                        <div id="fazer">
+
+                        </div>
+                        <div id="sodexo">
+
+                        </div>
                     </div>
                 </section>
 
-                <section id="mainos" class="flex col border width33">
-                    <div class="flex row border width100">
-                    <video controls autoplay loop>
-                        <source src="videos/kahvimainos.mp4" type="video/mp4">
-                    </video>
-                    <video controls autoplay loop>
-                        <source src="videos/kamamainos.mp4" type="video/mp4">
-                    </video>
-                    <video controls autoplay loop>
-                        <source src="videos/kesamainos.mp4" type="video/mp4">
-                    </video>
-                </div>
+                <section class="flex col border width33">
+                    <div class="videos flex row border width100">
+                        <article>
+                            <video class="mainos" src="./kahvimainos.mp4" type="video" autoplay loop>
+                            </video>
+                        </article>
+                        <article>
+                            <video class="mainos" src="./kamamainos.mp4" type="video" autoplay loop>
+                            </video>
+                        </article>
+                        <article>
+                            <video class="mainos" src="./kesamainos.mp4" type="video" autoplay loop>
+                            </video>
+                        </article>
+
+                    </div>
                 </section>
 
             </div>
@@ -87,7 +98,9 @@
 
     </div>
 </body>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment.min.js" integrity="sha512-qTXRIMyZIFb8iQcfjXWCO8+M5Tbc38Qi5WzdPOYZHIlZpzBHG3L3by84BBBOiRGiEb7KKtAOAs5qYdUiZiQNNQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment.min.js"
+    integrity="sha512-qTXRIMyZIFb8iQcfjXWCO8+M5Tbc38Qi5WzdPOYZHIlZpzBHG3L3by84BBBOiRGiEb7KKtAOAs5qYdUiZiQNNQ=="
+    crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 <script src="weather.js"></script>
 <script>
     !function (d, s, id) { var js, fjs = d.getElementsByTagName(s)[0]; if (!d.getElementById(id)) { js = d.createElement(s); js.id = id; js.src = 'https://weatherwidget.io/js/widget.min.js'; fjs.parentNode.insertBefore(js, fjs); } }(document, 'script', 'weatherwidget-io-js');
