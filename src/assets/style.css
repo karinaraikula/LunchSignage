@@ -136,64 +136,76 @@ li {
 /*SÄÄN ja PVM leiska tästä eteenpäin*/
 
 .current-info {
+  margin: 10px 20px;
   display: flex;
   justify-content: space-between;
   flex-wrap: wrap;
-
 }
 
 .date-container {
-  font-weight: 100;
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  align-content: flex-end;
 
 }
+.place-container {
+  display: flex;
+  flex: 1;
+  text-align: end;
+  flex-direction: column;
+}
 
-.date-container .time {
+.logo-container {
+  display: flex;
+  flex: 1;
+  height: 150px;
+  padding: 10px;
+}
+
+.time {
+  display: flex;
+  flex-direction: row;
   font-size: 70px;
 }
 
-.date-container .date {
-  font-size: 30px;
-}
-
-.place-container {
-  text-align: end;
-}
-
-.place-container .time-zone {
-  font-size: 30px;
-  font-weight: 100;
-}
-
-.place-container .country {
-  font-size: 12px;
-  font-weight: 700;
-}
-
-.place-container .city {
-  font-size: 30px;
-  font-weight: 100;
-}
-
-.current-info .others {
+ .date {
   display: flex;
-  flex-direction: column;
-  background: rgba(182, 182, 194, 0.6);
-  padding: 20px;
-  border-radius: 10px;
-  margin: 10px 0;
-  border: 1px solid #eee;
+  flex-direction: row;
+  font-size: 30px;
 }
 
-.current-info .others .weather-item {
+#logo {
+  height: 100%;
+  margin: auto;
+}
+
+.city {
+  font-size: 20px;
+  margin-right: 5%;
+}
+
+.others {
   display: flex;
-  justify-content: space-between;
+  flex-direction: row;
+}
+
+.icon {
+  display: flex;
+  flex: 4;
+  justify-content: flex-end;
 }
 
 .w-icon {
-  display: flex;
-  width: 200px;
+  width: 100px;
 }
-
+.other {
+  display: flex;
+  flex: 1;
+  margin: auto;
+  font-size: 40px;
+  justify-content: flex-start;
+}
 /*HSL leiska*/
 
 #hsl-data{
