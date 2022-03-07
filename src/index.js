@@ -4,6 +4,7 @@ import { fetchData } from './modules/network';
 import { getTodayIndex } from './modules/tools';
 import HSLData from './modules/hsl-data';
 import weatherData from './modules/weather';
+import city from './modules/city';
 
 let language = 'fi';
 
