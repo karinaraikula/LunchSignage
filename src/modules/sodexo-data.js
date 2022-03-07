@@ -2,7 +2,7 @@ import { todayISODate } from "./tools";
 
 const dataUrlDaily = `https://www.sodexo.fi/ruokalistat/output/daily_json/152/${todayISODate}`;
 const dataUrlWeekly = 'https://www.sodexo.fi/ruokalistat/output/weekly_json/152';
-
+//myllypuro 158
 /**
  * Extract course titles from Sodexo menu JSON object
  *
@@ -13,12 +13,12 @@ const dataUrlWeekly = 'https://www.sodexo.fi/ruokalistat/output/weekly_json/152'
  */
 const parseDayMenu = (menu, lang = 'fi') => {
   const courses = Object.values(menu);
-  const dailyMenu = [];
+  let dailyMenu = [];
   for (const course of courses) {
     if (lang === 'en') {
-      dailyMenu.push(course.title_en);
+      dailyMenu.push(course.title_en + ', ' + course.dietcodes);
     } else {
-      dailyMenu.push(course.title_fi);
+      dailyMenu.push(course.title_fi + ', ' + course.dietcodes + ', ' + course.price);
     }
   }
   return dailyMenu;

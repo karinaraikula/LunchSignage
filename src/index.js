@@ -2,6 +2,7 @@ import SodexoData from './modules/sodexo-data';
 import FazerData from './modules/fazer-data';
 import { fetchData } from './modules/network';
 import { getTodayIndex } from './modules/tools';
+import HSLData from './modules/hsl-data';
 
 let language = 'fi';
 
@@ -42,7 +43,7 @@ const switchRestaurant = () => {
   if (sodexo.style.display === "none") {
     sodexo.style.display = "block";
     fazer.style.display = "none";
-    toiminimi.innerHTML="Myllypuron lounas:";
+    toiminimi.innerHTML="Myyrmäen lounas:";
   } else {
     sodexo.style.display = "none";
     fazer.style.display = "block";
@@ -74,16 +75,6 @@ const createViewCarousel = (activeView, duration) => {
 const init = () => {
   createViewCarousel(0, 10);
 
-  //showMenu('sodexo', SodexoData.getDailyMenu('fi'));
-  //showMenu('fazer', FazerData.getDailyMenu('fi'));
-  /*
-    fetchData(SodexoData.dataUrlDaily).then(data => {
-      console.log('sodexo', data);
-      const courses = SodexoData.parseDayMenu(data.courses);
-      showMenu('sodexo',courses);
-    });
-  */
-
   fetchData(FazerData.dataUrlFi, 'fazer-php').then(data => {
     const courses = FazerData.parseDayMenu(data.LunchMenus, getTodayIndex());
     renderMenu(courses, 'fazer');
@@ -114,10 +105,14 @@ const init = () => {
     console.log('hsl data', response.data.stop.stoptimesWithoutPatterns[0]);
     const stop = response.data.stop;
     let time = new Date((stop.stoptimesWithoutPatterns[0].realtimeArrival + stop.stoptimesWithoutPatterns[0].serviceDay) * 1000);
-    document.querySelector('#hsl-data').innerHTML = `<p>
-      Seuraava dösä pysäkiltä ${stop.name} on ${stop.stoptimesWithoutPatterns[0].headsign} ja saapuu
-      ${time}
-    </p>`;
+    document.querySelector('#hsl-data').innerHTML = `
+   
+    Pysäkki: ${stop.name} 
+    Minne:${stop.stoptimesWithoutPatterns[0].headsign} 
+    Milloin:${time}
+    
+    
+  `;
   });
 
 };
