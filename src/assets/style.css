@@ -91,9 +91,13 @@ body {
 
 #fazer, #sodexo {
   padding: 5%;
-  background: linear-gradient(to right, #000428, #004e92);
   max-height: 100%;
   overflow:hidden;
+}
+
+.background{
+  background: linear-gradient(to right, #000428, #004e92);
+
 }
 
 video{
@@ -109,7 +113,6 @@ video{
 
 
 h1 {
-  background: linear-gradient(to right, #000428, #004e92);
   padding: 5% 5% 0 5%;
   font-size: 1.6em;
 }
