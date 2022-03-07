@@ -1,11 +1,6 @@
 const timeEl = document.getElementById('time');
 const dateEl = document.getElementById('date');
 const currentWeatherItemsEl = document.getElementById('current-weather-items');
-const timezone = document.getElementById('time-zone');
-const countryEl = document.getElementById('country');
-const weatherForecastEl = document.getElementById('weather-forecast');
-const currentTempEl = document.getElementById('current-temp');
-
 
 const days = ['Sunnuntai', 'Maanantai', 'Tiistai', 'Keskiviikko', 'Torstai', 'Perjantai', 'Lauantai'];
 const months = ['tammikuuta', 'helmikuuta', 'maaliskuuta', 'huhtikuuta', 'toukokuuta', 'kesäkuuta', 'heinäkuuta', 'elokuuta', 'syyskuuta', 'lokakuuta', 'marraskuuta', 'joulukuuta'];
@@ -48,9 +43,6 @@ function getWeatherData() {
 
 
 function showWeatherData(data) {
-
-  
-
     let otherDayForcast = '';
     data.daily.forEach((day, idx) => {
         if (idx == 0) {
@@ -63,3 +55,8 @@ function showWeatherData(data) {
         };
     });
 };
+
+
+
+const weatherData = {timeEl, dateEl, currentWeatherItemsEl, days, months, API_KEY, setInterval, getWeatherData, showWeatherData};
+export default weatherData;

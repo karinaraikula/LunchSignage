@@ -3,6 +3,7 @@ import FazerData from './modules/fazer-data';
 import { fetchData } from './modules/network';
 import { getTodayIndex } from './modules/tools';
 import HSLData from './modules/hsl-data';
+import weatherData from './modules/weather';
 
 let language = 'fi';
 
@@ -108,6 +109,7 @@ const init = () => {
     document.querySelector('#hsl-data').innerHTML = `
    
     Pysäkki: ${stop.name} 
+    Linja: ${stop.stoptimesWithoutPatterns[0].trip.routeShortName}
     Minne:${stop.stoptimesWithoutPatterns[0].headsign} 
     Milloin:${time}
     
