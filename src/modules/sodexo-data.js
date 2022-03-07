@@ -1,6 +1,6 @@
-import {todayISODate} from "./tools";
+import { todayISODate } from "./tools";
 
-const dataUrlDaily = `https://www.sodexo.fi/ruokalistat/output/daily_json/152/2022-03-10`;
+const dataUrlDaily = `https://www.sodexo.fi/ruokalistat/output/daily_json/152/${todayISODate}`;
 const dataUrlWeekly = 'https://www.sodexo.fi/ruokalistat/output/weekly_json/152';
 
 /**
@@ -24,5 +24,5 @@ const parseDayMenu = (menu, lang = 'fi') => {
   return dailyMenu;
 };
 
-const SodexoData = {dataUrlDaily, dataUrlWeekly, parseDayMenu};
+const SodexoData = { dataUrlDaily, dataUrlWeekly, parseDayMenu };
 export default SodexoData;
