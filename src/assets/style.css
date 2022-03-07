@@ -39,7 +39,7 @@ body {
 }
 
 .height {
-  height: 90vh;
+  height: 80vh;
 }
 
 .width33 {
@@ -53,7 +53,9 @@ body {
   width: 100%;
 }
 
-
+.height10vh{
+  min-height: 10vh;
+}
 
 .scroll-left {
   min-height: 10vh;
