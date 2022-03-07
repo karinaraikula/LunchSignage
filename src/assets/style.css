@@ -45,6 +45,9 @@ body {
 .width33 {
   width: 33%;
 }
+.width34{
+  width: 34%;
+}
 
 .width100 {
   width: 100%;
@@ -93,7 +96,10 @@ body {
   overflow:hidden;
 }
 
-
+video{
+  max-width: 100%;
+  margin: 0;
+}
 .lounas {
   color: #A9A9A9;
 }
