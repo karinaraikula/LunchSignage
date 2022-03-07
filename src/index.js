@@ -68,7 +68,7 @@ const createViewCarousel = (activeView, duration) => {
   views[activeView].style.display = 'block';
   setTimeout(() => {
     createViewCarousel(activeView + 1, duration);
-  }, duration * 1000);
+  }, duration * 500);
 };
 
 const init = () => {
