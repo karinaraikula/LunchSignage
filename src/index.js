@@ -114,14 +114,12 @@ const init = () => {
     let localeSpecificTime = time.toLocaleTimeString('fi-FI', { hour: 'numeric', minute: 'numeric' });
 
     document.querySelector('#hsl-data').innerHTML = `
-
-    Pysäkki: ${stop.name}
-    Linja: ${stop.stoptimesWithoutPatterns[0].trip.routeShortName}
-    Minne:${stop.stoptimesWithoutPatterns[0].headsign}
-    Milloin:${localeSpecificTime.replace('PM', '')}
-
-
-  `;
+    <ul class="hsl-row">
+      <li class="hsl-stop">${stop.name}</li>
+      <li class="hsl-line">${stop.stoptimesWithoutPatterns[0].trip.routeShortName}</li>
+      <li class="hsl-destination">${stop.stoptimesWithoutPatterns[0].headsign}</li>
+      <li class="hsl-time">${localeSpecificTime.replace('PM', '')}</li>
+    </ul> `;
   });
 
 };

@@ -224,9 +224,21 @@ li {
 
 }
 
+#hsl-menu li {
+  justify-content: flex-start;
+  display: inline;
+}
+
 #hsl-data {}
 
 #hsl-logo {
   background-color: rgb(0, 96, 163);
   width: 150px;
+}
+
+.hsl-row {
+  display: inline-flex;
+  width: fit-content;
+  height: fit-content;
+  justify-content: space-between;
 }
