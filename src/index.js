@@ -74,6 +74,8 @@ const createViewCarousel = (activeView, duration) => {
   }, duration * 500);
 };
 
+
+
 const init = () => {
   createViewCarousel(0, 10);
 
@@ -99,11 +101,10 @@ const init = () => {
 
 
 
-
   fetchData(HSLData.apiUrl, {
     method: 'POST',
     headers: { 'Content-Type': 'application/graphql' },
-    body: HSLData.getQueryForNextRidesByStopId(2132207),
+    body: HSLData.getQueryForNextRidesByStopId(),
 
   }).then(response => {
     // TODO: create separate render HSL data functions (in HSLData module maybe?)
