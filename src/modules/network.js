@@ -7,7 +7,7 @@
  *
  * @returns {Object} response json data
  */
-const fetchData = async (url,  useProxy) => {
+const fetchData = async (url, useProxy) => {
     if (useProxy === 'allorigins') {
         url = `https://api.allorigins.win/get?url=${encodeURIComponent(url)}`;
     } else if (useProxy === 'fazer-php') {
