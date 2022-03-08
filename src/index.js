@@ -108,24 +108,44 @@ const init = () => {
 
   }).then(response => {
     // TODO: create separate render HSL data functions (in HSLData module maybe?)
-    console.log('hsl data', response.data.stop.stoptimesWithoutPatterns[0]);
-
     const stop = response.data.stop;
-    let time = new Date((stop.stoptimesWithoutPatterns[0].realtimeArrival + stop.stoptimesWithoutPatterns[0].serviceDay) * 1000);
+    const hslContent = document.querySelector('.hsl-data');
+    hslContent.innerHTML = ``;
+    
+    console.log('hsl data', response.data.stop.stoptimesWithoutPatterns[0]);
+    
+    for (let i = 0; i < 4; i++) {
+    const stop = response.data.stop;
+    let time = new Date((stop.stoptimesWithoutPatterns[i].realtimeArrival + stop.stoptimesWithoutPatterns[i].serviceDay) * 1000);
     let localeSpecificTime = time.toLocaleTimeString('fi-FI', { hour: 'numeric', minute: 'numeric' });
-
-    document.querySelector('#hsl-data').innerHTML = `
+   
+    console.log(stop.name, stop.stoptimesWithoutPatterns[i].trip.routeShortName, stop.stoptimesWithoutPatterns[i].headsign, localeSpecificTime);
+    
+    hslContent.innerHTML += `
     <ul class="hsl-row">
-      <li class="hsl-stop">${stop.name}</li>
-      <li class="hsl-line">${stop.stoptimesWithoutPatterns[0].trip.routeShortName}</li>
-      <li class="hsl-destination">${stop.stoptimesWithoutPatterns[0].headsign}</li>
-      <li class="hsl-time">${localeSpecificTime.replace('PM', '')}</li>
-    </ul> `;
-  });
+    <li class="hsl-stop>"${stop.name}</li>
+    <li class="hsl-line>"${stop.stoptimesWithoutPatterns[i].trip.routeShortName}</li>
+    <li class="hsl-destination">${stop.stoptimesWithoutPatterns[i].headsign}<li>
+    <li class="hsl-time>"${localeSpecificTime.replace('PM', '')}</li>
+    </ul>
+  `;
+  
+  };
+});
 
 };
 
 init();
 
+
+
+/*
+    document.getElementsByClassName('hsl-data').innerHTML = `
+   
+    <div>${stop.name}</div>
+    <div>${stop.stoptimesWithoutPatterns[i].trip.routeShortName}</div>
+    <div>${stop.stoptimesWithoutPatterns[i].headsign} </div>
+    <div>${localeSpecificTime.replace('PM', '')}</div>
+    */
 
 
