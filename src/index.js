@@ -98,6 +98,8 @@ const init = () => {
   });
 
 
+
+
   fetchData(HSLData.apiUrl, {
     method: 'POST',
     headers: { 'Content-Type': 'application/graphql' },
@@ -106,16 +108,17 @@ const init = () => {
   }).then(response => {
     // TODO: create separate render HSL data functions (in HSLData module maybe?)
     console.log('hsl data', response.data.stop.stoptimesWithoutPatterns[0]);
+
     const stop = response.data.stop;
     let time = new Date((stop.stoptimesWithoutPatterns[0].realtimeArrival + stop.stoptimesWithoutPatterns[0].serviceDay) * 1000);
+    let localeSpecificTime = time.toLocaleTimeString('fi-FI', { hour: 'numeric', minute: 'numeric' });
+
     document.querySelector('#hsl-data').innerHTML = `
 
-   <ul class="hsl-lista">
-   <div>${stop.name}</div>
-   <div>${stop.stoptimesWithoutPatterns[0].trip.routeShortName}</div>
-   <div>${stop.stoptimesWithoutPatterns[0].headsign} </div>
-   <div>${time}</div>
-   </ul>
+    Pysäkki: ${stop.name}
+    Linja: ${stop.stoptimesWithoutPatterns[0].trip.routeShortName}
+    Minne:${stop.stoptimesWithoutPatterns[0].headsign}
+    Milloin:${localeSpecificTime.replace('PM', '')}
 
 
   `;
