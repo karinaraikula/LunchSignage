@@ -8,6 +8,9 @@ import city from './modules/city';
 
 let lang = 'fi';
 
+
+
+
 /**
  * Renders menu courses on page
  */
@@ -19,6 +22,10 @@ const renderKaramalmiMenu = (data, targetId) => {
     listElement.textContent = item;
     ulElement.appendChild(listElement);
   }
+  //document.getElementById("kampus").innerHTML = "Karamalmi";
+  document.getElementById("dropdown").innerHTML = "Karamalmi";
+
+
 };
 
 const renderArabiaMenu = (data, targetId) => {
@@ -29,6 +36,10 @@ const renderArabiaMenu = (data, targetId) => {
     listElement.textContent = item;
     ulElement.appendChild(listElement);
   }
+  //document.getElementById("kampus").innerHTML = "Arabia";
+  document.getElementById("dropdown").innerHTML = "Arabia";
+
+
 };
 
 const renderMyrtsiMenu = (data, targetId) => {
@@ -39,6 +50,11 @@ const renderMyrtsiMenu = (data, targetId) => {
     listElement.textContent = item;
     ulElement.appendChild(listElement);
   }
+  //document.getElementById("kampus").innerHTML = "Myyrmäki";
+  document.getElementById("dropdown").innerHTML = "Myyrmäki";
+
+
+
 };
 
 const renderMyllyMenu = (data, targetId) => {
@@ -49,6 +65,10 @@ const renderMyllyMenu = (data, targetId) => {
     listElement.textContent = item;
     ulElement.appendChild(listElement);
   }
+  //document.getElementById("kampus").innerHTML = "Myllypuro";
+  document.getElementById("dropdown").innerHTML = "Myllypuro";
+
+
 };
 
 /**
@@ -71,14 +91,12 @@ const createViewCarousel = (activeView, duration) => {
   }, duration * 500);
 };
 
-//language change button
-document.getElementById('switch-lang').addEventListener('click', () => {
-  switchLanguage();
-});
+
 
 /*
  * Toggle between en/fi
  * */
+/*
 const switchLanguage = () => {
   if (lang == 'fi') {
     lang = 'en';
@@ -88,7 +106,11 @@ const switchLanguage = () => {
     console.log('lang is fi');
   }
 };
-
+//language change button
+document.getElementById('switch-lang').addEventListener('click', () => {
+  switchLanguage();
+});
+*/
 const fazerKaramalmi = () => {
   fetchData(FazerData.fazerKaramalmiFiUrl, {}, 'fazer-php').then(data => {
     console.log('karamalmi', data);
@@ -123,21 +145,21 @@ const sodexoMylly = () => {
 
 document.getElementById('karamalmi-btn').addEventListener("click", function () {
   fazerKaramalmi(),
-  karamalmiHSL();
+    karamalmiHSL();
 });
 document.getElementById('arabia-btn').addEventListener("click", function () {
   fazerArabia(),
-  arabiaHSL();
+    arabiaHSL();
 });
 
 document.getElementById('mylly-btn').addEventListener("click", function () {
   sodexoMylly(),
-  myllypuroHSL();
+    myllypuroHSL();
 });
 
 document.getElementById('myrtsi-btn').addEventListener("click", function () {
   sodexoMyrtsi(),
-  myrtsiHSL();
+    myrtsiHSL();
 });
 
 
@@ -145,6 +167,7 @@ document.getElementById('myrtsi-btn').addEventListener("click", function () {
 const init = () => {
   createViewCarousel(0, 10);
   fazerKaramalmi();
+  karamalmiHSL();
 };
 
 const karamalmiHSL = () => {
@@ -180,7 +203,7 @@ const karamalmiHSL = () => {
   });
 };
 
-  const arabiaHSL = () => {
+const arabiaHSL = () => {
   fetchData(HSLData.apiUrl, {
     method: 'POST',
     headers: { 'Content-Type': 'application/graphql' },
@@ -282,9 +305,9 @@ const myrtsiHSL = () => {
 };
 
 
-
-
 init();
+
+
 
 
 

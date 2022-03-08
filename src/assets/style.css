@@ -7,17 +7,59 @@
 }
 
 body {
-  height: 100vh;
+  max-height: 100vh;
   background-color: #c7eaff;
+}
+
+footer {
+  height: 5vh !important;
+  width: 100%;
+  position: absolute;
+  bottom: 0;
+}
+
+header {
+  width: 100%;
+  height: 15vh;
+}
+
+.content {
+max-height: 80vh;
+}
+
+.main1 {
+  width: 55%;
+}
+
+.main2 {
+  width: 45%;
+}
+
+.hsl-div {
+  width: 50%;
+}
+
+.weather-div {
+  width: 50%;
+}
+
+.border {
+  border: 1px solid black;
+}
+
+.flex {
+  display: flex;
+}
+
+.mainos-section {
+  width: 100%;
+  height: 95vh;
+  float: right;
 }
 
 .hsl-lista {
   font-size: 1em;
   float: left;
-}
-
-#banner {
-  width: 100%;
 }
 
 .flex {
@@ -37,15 +79,20 @@ body {
 }
 
 .border {
-  border: 1px solid black;
+
+  border-radius: 10px;
 }
 
 .justify {
   justify-content: stretch;
 }
 
+.center {
+  align-items: center;
+}
+
 .height {
-  height: 80vh;
+  height: 90vh;
 }
 
 .width33 {
@@ -65,7 +112,6 @@ body {
 }
 
 .scroll-left {
-  min-height: 10vh;
   height: inherit;
   overflow: hidden;
   position: absolute;
@@ -73,12 +119,11 @@ body {
   background: linear-gradient(to right, #f12711, #f5af19);
   color: #ccc;
   font-family: Verdana, Geneva, Tahoma, sans-serif;
-  font-size: 40px;
+  font-size: 30px;
 }
 
 .scroll-left p {
   position: relative;
-  width: max-content;
   margin: 0;
   transform: translateX(10%);
   animation: scroll-left 60s linear infinite;
@@ -87,7 +132,7 @@ body {
 
 @keyframes scroll-left {
   0% {
-    transform: translateX(27%);
+    transform: translateX(100%);
   }
 
   100% {
@@ -95,19 +140,19 @@ body {
   }
 }
 
-#sodexo {
-  display: none;
+#kampus {
+  font-size: 2em;
+  margin-left: 10%;
 }
 
-#fazer, #sodexo {
+#menu {
   padding: 5%;
-  max-height: 100%;
-  overflow: hidden;
+
+  overflow: scroll;
 }
 
 .background {
   background: linear-gradient(to right, #000428, #004e92);
-
 }
 
 video {
@@ -117,6 +162,10 @@ video {
 
 .lounas {
   color: #A9A9A9;
+  padding: 10px;
+  align-items: center;
+  max-height: fit-content;
+  overflow: scroll;
 }
 
 .carousel {
@@ -169,9 +218,7 @@ li {
 
 .logo-container {
   display: flex;
-  flex: 1;
   height: 150px;
-  padding: 10px;
 }
 
 .time {
@@ -187,13 +234,16 @@ li {
 }
 
 #logo {
-  height: 100%;
-  margin: auto;
+  height: 50%;
+  position: relative;
+  top: 0;
+  left: 0;
+  margin: 0;
 }
 
 .city {
   font-size: 20px;
-  margin-right: 5%;
+  margin-right: 10%;
 }
 
 .others {
@@ -203,7 +253,6 @@ li {
 
 .icon {
   display: flex;
-  flex: 4;
   justify-content: flex-end;
 }
 
@@ -255,13 +304,72 @@ li {
 .dest {
   padding-left: 88px;
 }
+
 .aika {
   padding-left: 11px;
 }
 
 
 
+.paikkabutton {
+  background-color: #ccc;
+  /* Green */
+  border: none;
+  color: white;
+  opacity: 0.8;
+  padding: 15px 20px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+}
 
+/* Dropdown Button */
+.dropbtn {
+  background-color: transparent;
+  color: #A9A9A9;
+  padding: 16px;
+  font-size: 2em;
+  border: none;
+  cursor: pointer;
+}
 
+/* Dropdown button on hover & focus */
+.dropbtn:hover {
+  border: solid 1px #f1f1f1;
+  border-radius: 5px;
+}
 
+/* The container <div> - needed to position the dropdown content */
+.dropdown {
+  position: relative;
+  display: inline-block;
+}
 
+/* Dropdown Content (Hidden by Default) */
+.dropdown-content {
+  display: none;
+  position: relative;
+  background-color: transparent;
+  max-width: 500px;
+  box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+  z-index: 1;
+}
+
+/* Links inside the dropdown */
+.dropdown-content a {
+  color: black;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+}
+
+/* Change color of dropdown links on hover */
+.dropdown-content a:hover {
+  background-color: #ddd
+}
+
+/* Show the dropdown menu (use JS to add this class to the .dropdown-content container when the user clicks on the dropdown button) */
+.show {
+  display: block;
+}
