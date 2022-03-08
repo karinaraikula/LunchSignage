@@ -13,7 +13,6 @@ function getLocationData () {
         .then(data => {
         
         console.log(data);
-        alert(data[0].name);
         citylocation.innerHTML = data[0].name;
     });
         
