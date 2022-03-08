@@ -2,6 +2,9 @@ import SodexoData from './modules/sodexo-data';
 import FazerData from './modules/fazer-data';
 import { fetchData } from './modules/network';
 import { getTodayIndex } from './modules/tools';
+import HSLData from './modules/hsl-data';
+import weatherData from './modules/weather';
+import city from './modules/city';
 
 let language = 'fi';
 
@@ -42,11 +45,11 @@ const switchRestaurant = () => {
   if (sodexo.style.display === "none") {
     sodexo.style.display = "block";
     fazer.style.display = "none";
-    toiminimi.innerHTML="Myllypuron lounas:";
+    toiminimi.innerHTML = "Myyrmäen lounas:";
   } else {
     sodexo.style.display = "none";
     fazer.style.display = "block";
-    toiminimi.innerHTML="Karamalmin lounas:";
+    toiminimi.innerHTML = "Karamalmin lounas:";
 
   }
 };
@@ -68,23 +71,13 @@ const createViewCarousel = (activeView, duration) => {
   views[activeView].style.display = 'block';
   setTimeout(() => {
     createViewCarousel(activeView + 1, duration);
-  }, duration * 1000);
+  }, duration * 500);
 };
 
 const init = () => {
   createViewCarousel(0, 10);
 
-  //showMenu('sodexo', SodexoData.getDailyMenu('fi'));
-  //showMenu('fazer', FazerData.getDailyMenu('fi'));
-  /*
-    fetchData(SodexoData.dataUrlDaily).then(data => {
-      console.log('sodexo', data);
-      const courses = SodexoData.parseDayMenu(data.courses);
-      showMenu('sodexo',courses);
-    });
-  */
-
-  fetchData(FazerData.dataUrlFi, 'fazer-php').then(data => {
+  fetchData(FazerData.dataUrlFi, {}, 'fazer-php').then(data => {
     const courses = FazerData.parseDayMenu(data.LunchMenus, getTodayIndex());
     renderMenu(courses, 'fazer');
   });
@@ -108,16 +101,24 @@ const init = () => {
   fetchData(HSLData.apiUrl, {
     method: 'POST',
     headers: { 'Content-Type': 'application/graphql' },
-    body: HSLData.getQueryForNextRidesByStopId(2132207)
+    body: HSLData.getQueryForNextRidesByStopId(2132207),
+
   }).then(response => {
     // TODO: create separate render HSL data functions (in HSLData module maybe?)
     console.log('hsl data', response.data.stop.stoptimesWithoutPatterns[0]);
     const stop = response.data.stop;
     let time = new Date((stop.stoptimesWithoutPatterns[0].realtimeArrival + stop.stoptimesWithoutPatterns[0].serviceDay) * 1000);
-    document.querySelector('#hsl-data').innerHTML = `<p>
-      Seuraava dösä pysäkiltä ${stop.name} on ${stop.stoptimesWithoutPatterns[0].headsign} ja saapuu
-      ${time}
-    </p>`;
+    document.querySelector('#hsl-data').innerHTML = `
+
+   <ul class="hsl-lista">
+   <li>${stop.name}</li>
+   <li>${stop.stoptimesWithoutPatterns[0].trip.routeShortName}</li>
+   <li>${stop.stoptimesWithoutPatterns[0].headsign} </li>
+   <li>${time}</li>
+   </ul>
+    
+    
+  `;
   });
 
 };

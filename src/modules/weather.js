@@ -1,14 +1,9 @@
 const timeEl = document.getElementById('time');
 const dateEl = document.getElementById('date');
 const currentWeatherItemsEl = document.getElementById('current-weather-items');
-const timezone = document.getElementById('time-zone');
-const countryEl = document.getElementById('country');
-const weatherForecastEl = document.getElementById('weather-forecast');
-const currentTempEl = document.getElementById('current-temp');
-
 
 const days = ['Sunnuntai', 'Maanantai', 'Tiistai', 'Keskiviikko', 'Torstai', 'Perjantai', 'Lauantai'];
-const months = ['Tammikuuta', 'Helmikuuta', 'Maaliskuuta', 'Huhtikuuta', 'Toukokuuta', 'Kesäkuuta', 'Heinäkuuta', 'Elokuuta', 'Syyskuuta', 'Lokakuuta', 'Marraskuuta', 'Joulukuuta'];
+const months = ['tammikuuta', 'helmikuuta', 'maaliskuuta', 'huhtikuuta', 'toukokuuta', 'kesäkuuta', 'heinäkuuta', 'elokuuta', 'syyskuuta', 'lokakuuta', 'marraskuuta', 'joulukuuta'];
 
 const API_KEY = 'fcaad45fa4028c3aa51faecc8f25d3ab';
 
@@ -24,7 +19,7 @@ setInterval(() => {
 
     timeEl.innerHTML = hour + '.' + minutes;
 
-    dateEl.innerHTML = days[day] + ', ' + date + '. päivä ' + months[month
+    dateEl.innerHTML = days[day] + ', ' + date + '. ' + months[month
     ];
 }, 1000);
 
@@ -48,21 +43,20 @@ function getWeatherData() {
 
 
 function showWeatherData(data) {
-
-    timezone.innerHTML = data.timezone;
-    countryEl.innerHTML = data.lat + 'N ' + data.lon + 'E';
-
     let otherDayForcast = '';
     data.daily.forEach((day, idx) => {
         if (idx == 0) {
             currentWeatherItemsEl.innerHTML = `
+            <div class="icon">
             <img src="http://openweathermap.org/img/wn//${day.weather[0].icon}@4x.png" alt="weather icon" class="w-icon">
-            <div class="other">
-                <div class="temp">Päivällä  ${Math.floor(day.temp.day)}&#176;C</div>
-                <div class="temp">Yöllä  ${Math.floor(day.temp.night)}&#176;C</div>
             </div>
-            
+            <div class="other"> ${Math.floor(day.temp.day)}&#176;C</div>
             `;
         };
     });
 };
+
+
+
+const weatherData = {timeEl, dateEl, currentWeatherItemsEl, days, months, API_KEY, setInterval, getWeatherData, showWeatherData};
+export default weatherData;

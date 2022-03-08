@@ -10,6 +10,11 @@ body {
   background-color: #c7eaff;
 }
 
+.hsl-lista {
+  font-size: 1em;
+  float: left;
+}
+
 #banner {
   width: 100%;
 }
@@ -39,18 +44,24 @@ body {
 }
 
 .height {
-  height: 90vh;
+  height: 80vh;
 }
 
 .width33 {
   width: 33%;
 }
 
+.width34 {
+  width: 34%;
+}
+
 .width100 {
   width: 100%;
 }
 
-
+.height10vh {
+  min-height: 10vh;
+}
 
 .scroll-left {
   min-height: 10vh;
@@ -82,28 +93,37 @@ body {
     transform: translateX(-100%);
   }
 }
-#sodexo{
+
+#sodexo {
   display: none;
 }
 
 #fazer, #sodexo {
   padding: 5%;
-  background: linear-gradient(to right, #000428, #004e92);
   max-height: 100%;
-  overflow:hidden;
+  overflow: hidden;
 }
 
+.background {
+  background: linear-gradient(to right, #000428, #004e92);
+
+}
+
+video {
+  max-width: 100%;
+  margin: 0;
+}
 
 .lounas {
   color: #A9A9A9;
 }
-.carousel{
+
+.carousel {
   overflow: hidden;
 }
 
 
 h1 {
-  background: linear-gradient(to right, #000428, #004e92);
   padding: 5% 5% 0 5%;
   font-size: 1.6em;
 }
@@ -125,70 +145,88 @@ li {
 /*SÄÄN ja PVM leiska tästä eteenpäin*/
 
 .current-info {
+  margin: 10px 20px;
   display: flex;
   justify-content: space-between;
   flex-wrap: wrap;
-
 }
 
 .date-container {
-  font-weight: 100;
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  align-content: flex-end;
 
-}
-
-.date-container .time {
-  font-size: 70px;
-}
-
-.date-container .date {
-  font-size: 30px;
 }
 
 .place-container {
+  display: flex;
+  flex: 1;
   text-align: end;
-}
-
-.place-container .time-zone {
-  font-size: 30px;
-  font-weight: 100;
-}
-
-.place-container .country {
-  font-size: 12px;
-  font-weight: 700;
-}
-
-.place-container .city {
-  font-size: 30px;
-  font-weight: 100;
-}
-
-.current-info .others {
-  display: flex;
   flex-direction: column;
-  background: rgba(182, 182, 194, 0.6);
-  padding: 20px;
-  border-radius: 10px;
-  margin: 10px 0;
-  border: 1px solid #eee;
 }
 
-.current-info .others .weather-item {
+.logo-container {
   display: flex;
-  justify-content: space-between;
+  flex: 1;
+  height: 150px;
+  padding: 10px;
+}
+
+.time {
+  display: flex;
+  flex-direction: row;
+  font-size: 70px;
+}
+
+.date {
+  display: flex;
+  flex-direction: row;
+  font-size: 30px;
+}
+
+#logo {
+  height: 100%;
+  margin: auto;
+}
+
+.city {
+  font-size: 20px;
+  margin-right: 5%;
+}
+
+.others {
+  display: flex;
+  flex-direction: row;
+}
+
+.icon {
+  display: flex;
+  flex: 4;
+  justify-content: flex-end;
 }
 
 .w-icon {
+  width: 100px;
+}
+
+.other {
   display: flex;
-  width: 200px;
+  flex: 1;
+  margin: auto;
+  font-size: 40px;
+  justify-content: flex-start;
 }
 
 /*HSL leiska*/
-
-#hsl-data{
+.hsl {
   background-color: rgb(0, 96, 163);
-}
-#hsl-logo{
-  width: 150px;
 
+}
+
+#hsl-data {}
+
+#hsl-logo {
+  background-color: rgb(0, 96, 163);
+  width: 150px;
 }
