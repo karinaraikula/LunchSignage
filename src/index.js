@@ -122,28 +122,25 @@ const sodexoMylly = () => {
 };
 
 document.getElementById('karamalmi-btn').addEventListener("click", function () {
-  fazerKaramalmi();
+  fazerKaramalmi(),
+  karamalmiHSL();
 });
 document.getElementById('arabia-btn').addEventListener("click", function () {
-  fazerArabia();
+  fazerArabia(),
+  arabiaHSL();
 });
 
 document.getElementById('mylly-btn').addEventListener("click", function () {
-  sodexoMylly();
+  sodexoMylly(),
+  myllypuroHSL();
 });
 
 document.getElementById('myrtsi-btn').addEventListener("click", function () {
-  sodexoMyrtsi();
+  sodexoMyrtsi(),
+  myrtsiHSL();
 });
 
-
-const init = () => {
-
-  createViewCarousel(0, 10);
-
-  fazerKaramalmi();
-
-
+const karamalmiHSL = () => {
 
   fetchData(HSLData.apiUrl, {
     method: 'POST',
@@ -159,46 +156,138 @@ const init = () => {
     console.log('hsl data', response.data.stop.stoptimesWithoutPatterns[0]);
 
     for (let i = 0; i < 4; i++) {
-    const stop = response.data.stop;
-    let time = new Date((stop.stoptimesWithoutPatterns[i].realtimeArrival + stop.stoptimesWithoutPatterns[i].serviceDay) * 1000);
-    let localeSpecificTime = time.toLocaleTimeString('fi-FI', { hour: 'numeric', minute: 'numeric' });
+      const stop = response.data.stop;
+      let time = new Date((stop.stoptimesWithoutPatterns[i].realtimeArrival + stop.stoptimesWithoutPatterns[i].serviceDay) * 1000);
+      let localeSpecificTime = time.toLocaleTimeString('fi-FI', { hour: 'numeric', minute: 'numeric' });
 
-    console.log(stop.name, stop.stoptimesWithoutPatterns[i].trip.routeShortName, stop.stoptimesWithoutPatterns[i].headsign, localeSpecificTime);
+      console.log(stop.name, stop.stoptimesWithoutPatterns[i].trip.routeShortName, stop.stoptimesWithoutPatterns[i].headsign, localeSpecificTime);
 
-    hslContent.innerHTML += `
-    <ul class="hsl-row">
-      
-      <li class="hsl-line">${stop.stoptimesWithoutPatterns[i].trip.routeShortName}</li>
-      <li class="hsl-destination">${stop.stoptimesWithoutPatterns[i].headsign}</li>
-      <li class="hsl-time">${localeSpecificTime.replace('PM', '')}</li>
-    </ul>
-  `;
-
-  };
-});
-
+      hslContent.innerHTML += `
+  <ul class="hsl-row">
+    <li class="hsl-stop">${stop.name}</li>
+    <li class="hsl-line">${stop.stoptimesWithoutPatterns[i].trip.routeShortName}</li>
+    <li class="hsl-destination">${stop.stoptimesWithoutPatterns[i].headsign}</li>
+    <li class="hsl-time">${localeSpecificTime.replace('PM', '')}</li>
+  </ul>
+`;
+    };
+  });
 };
+
+const arabiaHSL = () => {
+
+  fetchData(HSLData.apiUrl, {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/graphql' },
+    body: HSLData.getQueryForNextRidesByStopId(1230104),
+
+  }).then(response => {
+    // TODO: create separate render HSL data functions (in HSLData module maybe?)
+    const stop = response.data.stop;
+    const hslContent = document.querySelector('.hsl-data');
+    hslContent.innerHTML = ``;
+
+    console.log('hsl data', response.data.stop.stoptimesWithoutPatterns[0]);
+
+    for (let i = 0; i < 4; i++) {
+      const stop = response.data.stop;
+      let time = new Date((stop.stoptimesWithoutPatterns[i].realtimeArrival + stop.stoptimesWithoutPatterns[i].serviceDay) * 1000);
+      let localeSpecificTime = time.toLocaleTimeString('fi-FI', { hour: 'numeric', minute: 'numeric' });
+
+      console.log(stop.name, stop.stoptimesWithoutPatterns[i].trip.routeShortName, stop.stoptimesWithoutPatterns[i].headsign, localeSpecificTime);
+
+      hslContent.innerHTML += `
+  <ul class="hsl-row">
+    <li class="hsl-stop">${stop.name}</li>
+    <li class="hsl-line">${stop.stoptimesWithoutPatterns[i].trip.routeShortName}</li>
+    <li class="hsl-destination">${stop.stoptimesWithoutPatterns[i].headsign}</li>
+    <li class="hsl-time">${localeSpecificTime.replace('PM', '')}</li>
+  </ul>
+`;
+    };
+  });
+};
+
+const myllypuroHSL = () => {
+
+  fetchData(HSLData.apiUrl, {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/graphql' },
+    body: HSLData.getQueryForNextRidesByStopId(1454112),
+
+  }).then(response => {
+    // TODO: create separate render HSL data functions (in HSLData module maybe?)
+    const stop = response.data.stop;
+    const hslContent = document.querySelector('.hsl-data');
+    hslContent.innerHTML = ``;
+
+    console.log('hsl data', response.data.stop.stoptimesWithoutPatterns[0]);
+
+    for (let i = 0; i < 4; i++) {
+      const stop = response.data.stop;
+      let time = new Date((stop.stoptimesWithoutPatterns[i].realtimeArrival + stop.stoptimesWithoutPatterns[i].serviceDay) * 1000);
+      let localeSpecificTime = time.toLocaleTimeString('fi-FI', { hour: 'numeric', minute: 'numeric' });
+
+      console.log(stop.name, stop.stoptimesWithoutPatterns[i].trip.routeShortName, stop.stoptimesWithoutPatterns[i].headsign, localeSpecificTime);
+
+      hslContent.innerHTML += `
+  <ul class="hsl-row">
+    <li class="hsl-stop">${stop.name}</li>
+    <li class="hsl-line">${stop.stoptimesWithoutPatterns[i].trip.routeShortName}</li>
+    <li class="hsl-destination">${stop.stoptimesWithoutPatterns[i].headsign}</li>
+    <li class="hsl-time">${localeSpecificTime.replace('PM', '')}</li>
+  </ul>
+`;
+    };
+  });
+};
+
+const myrtsiHSL = () => {
+
+  fetchData(HSLData.apiUrl, {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/graphql' },
+    body: HSLData.getQueryForNextRidesByStopId(4150296),
+
+  }).then(response => {
+    // TODO: create separate render HSL data functions (in HSLData module maybe?)
+    const stop = response.data.stop;
+    const hslContent = document.querySelector('.hsl-data');
+    hslContent.innerHTML = ``;
+
+    console.log('hsl data', response.data.stop.stoptimesWithoutPatterns[0]);
+
+    for (let i = 0; i < 4; i++) {
+      const stop = response.data.stop;
+      let time = new Date((stop.stoptimesWithoutPatterns[i].realtimeArrival + stop.stoptimesWithoutPatterns[i].serviceDay) * 1000);
+      let localeSpecificTime = time.toLocaleTimeString('fi-FI', { hour: 'numeric', minute: 'numeric' });
+
+      console.log(stop.name, stop.stoptimesWithoutPatterns[i].trip.routeShortName, stop.stoptimesWithoutPatterns[i].headsign, localeSpecificTime);
+
+      hslContent.innerHTML += `
+  <ul class="hsl-row">
+    <li class="hsl-stop">${stop.name}</li>
+    <li class="hsl-line">${stop.stoptimesWithoutPatterns[i].trip.routeShortName}</li>
+    <li class="hsl-destination">${stop.stoptimesWithoutPatterns[i].headsign}</li>
+    <li class="hsl-time">${localeSpecificTime.replace('PM', '')}</li>
+  </ul>
+`;
+    };
+  });
+};
+
+
+const init = () => {
+
+  createViewCarousel(0, 10);
+  fazerKaramalmi();
+ 
+};
+
+
+
 
 init();
 
-
-
-/*
-    document.getElementsByClassName('hsl-data').innerHTML = `
-
-    <div>${stop.name}</div>
-    <div>${stop.stoptimesWithoutPatterns[i].trip.routeShortName}</div>
-    <div>${stop.stoptimesWithoutPatterns[i].headsign} </div>
-    <div>${localeSpecificTime.replace('PM', '')}</div>
-
-    <ul class="hsl-row">
-    <li class="hsl-stop>"${stop.name}</li>
-    <li class="hsl-line>"${stop.stoptimesWithoutPatterns[i].trip.routeShortName}</li>
-    <li class="hsl-destination">${stop.stoptimesWithoutPatterns[i].headsign}<li>
-    <li class="hsl-time>"${localeSpecificTime.replace('PM', '')}</li>
-    </ul>
-
-
-    */
 
 
