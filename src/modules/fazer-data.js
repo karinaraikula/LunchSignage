@@ -3,6 +3,7 @@ import {todayISODate} from "./tools";
 const dataUrlFi = `https://www.foodandco.fi/api/restaurant/menu/week?language=fi&restaurantPageId=270540&weekDate=${todayISODate}`;
 const dataUrlEn = `https://www.foodandco.fi/api/restaurant/menu/week?language=en&restaurantPageId=270540&weekDate=${todayISODate}`;
 //arabia 1256
+
 /**
  * Parses Fazer json data to simple array of strings
  *

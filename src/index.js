@@ -45,11 +45,11 @@ const switchRestaurant = () => {
   if (sodexo.style.display === "none") {
     sodexo.style.display = "block";
     fazer.style.display = "none";
-    toiminimi.innerHTML="Myyrmäen lounas:";
+    toiminimi.innerHTML = "Myyrmäen lounas:";
   } else {
     sodexo.style.display = "none";
     fazer.style.display = "block";
-    toiminimi.innerHTML="Karamalmin lounas:";
+    toiminimi.innerHTML = "Karamalmin lounas:";
 
   }
 };
@@ -77,7 +77,7 @@ const createViewCarousel = (activeView, duration) => {
 const init = () => {
   createViewCarousel(0, 10);
 
-  fetchData(FazerData.dataUrlFi, 'fazer-php').then(data => {
+  fetchData(FazerData.dataUrlFi, {}, 'fazer-php').then(data => {
     const courses = FazerData.parseDayMenu(data.LunchMenus, getTodayIndex());
     renderMenu(courses, 'fazer');
   });
@@ -101,18 +101,21 @@ const init = () => {
   fetchData(HSLData.apiUrl, {
     method: 'POST',
     headers: { 'Content-Type': 'application/graphql' },
-    body: HSLData.getQueryForNextRidesByStopId(2132207)
+    body: HSLData.getQueryForNextRidesByStopId(2132207),
+
   }).then(response => {
     // TODO: create separate render HSL data functions (in HSLData module maybe?)
     console.log('hsl data', response.data.stop.stoptimesWithoutPatterns[0]);
     const stop = response.data.stop;
     let time = new Date((stop.stoptimesWithoutPatterns[0].realtimeArrival + stop.stoptimesWithoutPatterns[0].serviceDay) * 1000);
     document.querySelector('#hsl-data').innerHTML = `
-   
-    Pysäkki: ${stop.name} 
-    Linja: ${stop.stoptimesWithoutPatterns[0].trip.routeShortName}
-    Minne:${stop.stoptimesWithoutPatterns[0].headsign} 
-    Milloin:${time}
+
+   <ul class="hsl-lista">
+   <li>${stop.name}</li>
+   <li>${stop.stoptimesWithoutPatterns[0].trip.routeShortName}</li>
+   <li>${stop.stoptimesWithoutPatterns[0].headsign} </li>
+   <li>${time}</li>
+   </ul>
     
     
   `;
