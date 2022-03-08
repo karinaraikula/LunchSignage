@@ -229,7 +229,10 @@ li {
   display: inline;
 }
 
-#hsl-data {}
+#hsl-data {
+  display: flex;
+  flex-direction: row;
+}
 
 #hsl-logo {
   background-color: rgb(0, 96, 163);
@@ -242,3 +245,4 @@ li {
   height: fit-content;
   justify-content: space-between;
 }
+

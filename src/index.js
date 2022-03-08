@@ -103,7 +103,7 @@ const init = () => {
   fetchData(HSLData.apiUrl, {
     method: 'POST',
     headers: { 'Content-Type': 'application/graphql' },
-    body: HSLData.getQueryForNextRidesByStopId(),
+    body: HSLData.getQueryForNextRidesByStopId(2132207),
 
   }).then(response => {
     // TODO: create separate render HSL data functions (in HSLData module maybe?)
