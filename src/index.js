@@ -167,7 +167,7 @@ const init = () => {
 
     hslContent.innerHTML += `
     <ul class="hsl-row">
-      <li class="hsl-stop">${stop.name}</li>
+      
       <li class="hsl-line">${stop.stoptimesWithoutPatterns[i].trip.routeShortName}</li>
       <li class="hsl-destination">${stop.stoptimesWithoutPatterns[i].headsign}</li>
       <li class="hsl-time">${localeSpecificTime.replace('PM', '')}</li>
@@ -190,15 +190,15 @@ init();
     <div>${stop.stoptimesWithoutPatterns[i].trip.routeShortName}</div>
     <div>${stop.stoptimesWithoutPatterns[i].headsign} </div>
     <div>${localeSpecificTime.replace('PM', '')}</div>
-    
+
     <ul class="hsl-row">
     <li class="hsl-stop>"${stop.name}</li>
     <li class="hsl-line>"${stop.stoptimesWithoutPatterns[i].trip.routeShortName}</li>
     <li class="hsl-destination">${stop.stoptimesWithoutPatterns[i].headsign}<li>
     <li class="hsl-time>"${localeSpecificTime.replace('PM', '')}</li>
     </ul>
-    
-    
+
+
     */
 
 

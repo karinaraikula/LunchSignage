@@ -2,7 +2,8 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  font-family: 'Nunito Sans', sans-serif;
+  /*font-family: 'Nunito Sans', sans-serif;*/
+  font-family: 'Rubik', sans-serif;
 }
 
 body {
@@ -239,10 +240,28 @@ li {
   width: 150px;
 }
 
+
 .hsl-row {
   display: inline-flex;
   width: fit-content;
   height: fit-content;
   justify-content: space-between;
 }
+
+.stop {
+  padding-left: 197px;
+}
+
+.dest {
+  padding-left: 88px;
+}
+.aika {
+  padding-left: 11px;
+}
+
+
+
+
+
+
 
