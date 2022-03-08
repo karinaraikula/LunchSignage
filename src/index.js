@@ -111,13 +111,13 @@ const init = () => {
     document.querySelector('#hsl-data').innerHTML = `
 
    <ul class="hsl-lista">
-   <li>${stop.name}</li>
-   <li>${stop.stoptimesWithoutPatterns[0].trip.routeShortName}</li>
-   <li>${stop.stoptimesWithoutPatterns[0].headsign} </li>
-   <li>${time}</li>
+   <div>${stop.name}</div>
+   <div>${stop.stoptimesWithoutPatterns[0].trip.routeShortName}</div>
+   <div>${stop.stoptimesWithoutPatterns[0].headsign} </div>
+   <div>${time}</div>
    </ul>
-    
-    
+
+
   `;
   });
 
