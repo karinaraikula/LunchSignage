@@ -6,12 +6,12 @@ import HSLData from './modules/hsl-data';
 import weatherData from './modules/weather';
 import city from './modules/city';
 
-let language = 'fi';
+let lang = 'fi';
 
 /**
  * Renders menu courses on page
  */
-const renderMenu = (data, targetId) => {
+const renderKaramalmiMenu = (data, targetId) => {
   const ulElement = document.querySelector('#' + targetId);
   ulElement.innerHTML = '';
   for (const item of data) {
@@ -21,36 +21,33 @@ const renderMenu = (data, targetId) => {
   }
 };
 
-/**
- * Toggle between en/fi
- */
-const switchLanguage = () => {
-  if (language === 'fi') {
-    language = 'en';
-    console.log('lang is en');
-    renderMenu(SodexoData.title_en, 'sodexo');
-    renderMenu(FazerData.title_en, 'fazer');
-  } else {
-    language = 'fi';
-    console.log('lang is fi');
-    renderMenu(SodexoData.title_fi, 'sodexo');
-    renderMenu(FazerData.title_fi, 'fazer');
+const renderArabiaMenu = (data, targetId) => {
+  const ulElement = document.querySelector('#' + targetId);
+  ulElement.innerHTML = '';
+  for (const item of data) {
+    const listElement = document.createElement('li');
+    listElement.textContent = item;
+    ulElement.appendChild(listElement);
   }
 };
-const switchRestaurant = () => {
-  let sodexo = document.getElementById("sodexo");
-  let fazer = document.getElementById("fazer");
-  let toiminimi = document.getElementById("toiminimi");
 
-  if (sodexo.style.display === "none") {
-    sodexo.style.display = "block";
-    fazer.style.display = "none";
-    toiminimi.innerHTML = "Myyrmäen lounas:";
-  } else {
-    sodexo.style.display = "none";
-    fazer.style.display = "block";
-    toiminimi.innerHTML = "Karamalmin lounas:";
+const renderMyrtsiMenu = (data, targetId) => {
+  const ulElement = document.querySelector('#' + targetId);
+  ulElement.innerHTML = '';
+  for (const item of data) {
+    const listElement = document.createElement('li');
+    listElement.textContent = item;
+    ulElement.appendChild(listElement);
+  }
+};
 
+const renderMyllyMenu = (data, targetId) => {
+  const ulElement = document.querySelector('#' + targetId);
+  ulElement.innerHTML = '';
+  for (const item of data) {
+    const listElement = document.createElement('li');
+    listElement.textContent = item;
+    ulElement.appendChild(listElement);
   }
 };
 
@@ -74,30 +71,78 @@ const createViewCarousel = (activeView, duration) => {
   }, duration * 500);
 };
 
+//language change button
+document.getElementById('switch-lang').addEventListener('click', () => {
+  switchLanguage();
+});
+
+/*
+ * Toggle between en/fi
+ * */
+const switchLanguage = () => {
+  if (lang == 'fi') {
+    lang = 'en';
+    console.log('lang is en');
+  } else {
+    lang = 'fi';
+    console.log('lang is fi');
+  }
+};
+
+const fazerKaramalmi = () => {
+  fetchData(FazerData.fazerKaramalmiFiUrl, {}, 'fazer-php').then(data => {
+    console.log('karamalmi', data);
+    const courses = FazerData.parseDayMenu(data.LunchMenus, getTodayIndex());
+    renderKaramalmiMenu(courses, 'menu');
+  });
+};
+
+const fazerArabia = () => {
+  fetchData(FazerData.fazerArabiaFiUrl, {}, 'fazer-php').then(data => {
+    console.log('arabia', data);
+    const courses = FazerData.parseDayMenu(data.LunchMenus, getTodayIndex());
+    renderArabiaMenu(courses, 'menu');
+  });
+};
+
+const sodexoMyrtsi = () => {
+  fetchData(SodexoData.sodexoMyrtsiDataUrl).then(data => {
+    console.log('myyrmäki', data);
+    const courses = SodexoData.parseDayMenu(data.courses);
+    renderMyrtsiMenu(courses, 'menu');
+  });
+};
+
+const sodexoMylly = () => {
+  fetchData(SodexoData.sodexoMyllyDataUrl).then(data => {
+    console.log('myllypuro', data);
+    const courses = SodexoData.parseDayMenu(data.courses);
+    renderMyllyMenu(courses, 'menu');
+  });
+};
+
+document.getElementById('karamalmi-btn').addEventListener("click", function () {
+  fazerKaramalmi();
+});
+document.getElementById('arabia-btn').addEventListener("click", function () {
+  fazerArabia();
+});
+
+document.getElementById('mylly-btn').addEventListener("click", function () {
+  sodexoMylly();
+});
+
+document.getElementById('myrtsi-btn').addEventListener("click", function () {
+  sodexoMyrtsi();
+});
 
 
 const init = () => {
+
   createViewCarousel(0, 10);
 
-  fetchData(FazerData.dataUrlFi, {}, 'fazer-php').then(data => {
-    const courses = FazerData.parseDayMenu(data.LunchMenus, getTodayIndex());
-    renderMenu(courses, 'fazer');
-  });
-  fetchData(SodexoData.dataUrlDaily).then(data => {
-    console.log('sodexo', data);
-    const courses = SodexoData.parseDayMenu(data.courses);
-    renderMenu(courses, 'sodexo');
-  });
+  fazerKaramalmi();
 
-  // Event listeners for buttons
-  /*
-   document.getElementById('switch-lang').addEventListener('click', () => {
-     switchLanguage();
-   });
-   */
-  document.getElementById('switch-rest').addEventListener('click', () => {
-    switchRestaurant();
-  });
 
 
   fetchData(HSLData.apiUrl, {

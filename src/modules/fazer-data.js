@@ -1,8 +1,10 @@
 import {todayISODate} from "./tools";
 
-const dataUrlFi = `https://www.foodandco.fi/api/restaurant/menu/week?language=fi&restaurantPageId=270540&weekDate=${todayISODate}`;
-const dataUrlEn = `https://www.foodandco.fi/api/restaurant/menu/week?language=en&restaurantPageId=270540&weekDate=${todayISODate}`;
-//arabia 1256
+const fazerKaramalmiFiUrl = `https://www.foodandco.fi/api/restaurant/menu/week?language=fi&restaurantPageId=270540&weekDate=${todayISODate}`;
+const fazerKaramalmiEnUrl = `https://www.foodandco.fi/api/restaurant/menu/week?language=en&restaurantPageId=270540&weekDate=${todayISODate}`;
+
+const fazerArabiaFiUrl = `https://www.foodandco.fi/api/restaurant/menu/week?language=fi&restaurantPageId=321259&weekDate=${todayISODate}`;
+const fazerArabiaEnUrl = `https://www.foodandco.fi/api/restaurant/menu/week?language=en&restaurantPageId=321259&weekDate=${todayISODate}`;
 
 /**
  * Parses Fazer json data to simple array of strings
@@ -17,7 +19,7 @@ const parseDayMenu = (lunchMenus, dayOfWeek) => {
     let meals = '';
     // TODO: clean output
     for (const meal of setMenu.Meals) {
-      meals +='\n'+ meal.Name + '\n ' + meal.Diets; 
+      meals +='\n'+ meal.Name + '\n' + meal.Diets; 
     }
     return  name ? name + ': ' + meals : meals;
   });
@@ -26,5 +28,5 @@ const parseDayMenu = (lunchMenus, dayOfWeek) => {
   return dayMenu;
 };
 
-const FazerData = {parseDayMenu, dataUrlFi, dataUrlEn};
+const FazerData = {parseDayMenu, fazerKaramalmiFiUrl, fazerKaramalmiEnUrl, fazerArabiaFiUrl, fazerArabiaEnUrl};
 export default FazerData;
