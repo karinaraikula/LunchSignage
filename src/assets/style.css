@@ -300,6 +300,7 @@ li {
 .hsl {
   background-color: rgb(0, 96, 163);
   padding: 30px;
+  color: white;
 }
 
 #hsl-menu li {
@@ -378,6 +379,8 @@ li {
   font-size: 2em;
   border: none;
   cursor: pointer;
+  position: absolute;
+  bottom: 0;
 }
 
 /* Dropdown button on hover & focus */
