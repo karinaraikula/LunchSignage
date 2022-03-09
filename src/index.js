@@ -193,7 +193,6 @@ const karamalmiHSL = () => {
 
       hslContent.innerHTML += `
   <ul class="hsl-row">
-    <li class="hsl-stop">${stop.name}</li>
     <li class="hsl-line">${stop.stoptimesWithoutPatterns[i].trip.routeShortName}</li>
     <li class="hsl-destination">${stop.stoptimesWithoutPatterns[i].headsign}</li>
     <li class="hsl-time">${localeSpecificTime.replace('PM', '')}</li>
@@ -226,7 +225,6 @@ const arabiaHSL = () => {
 
       hslContent.innerHTML += `
   <ul class="hsl-row">
-    <li class="hsl-stop">${stop.name}</li>
     <li class="hsl-line">${stop.stoptimesWithoutPatterns[i].trip.routeShortName}</li>
     <li class="hsl-destination">${stop.stoptimesWithoutPatterns[i].headsign}</li>
     <li class="hsl-time">${localeSpecificTime.replace('PM', '')}</li>
@@ -260,7 +258,6 @@ const myllypuroHSL = () => {
 
       hslContent.innerHTML += `
   <ul class="hsl-row">
-    <li class="hsl-stop">${stop.name}</li>
     <li class="hsl-line">${stop.stoptimesWithoutPatterns[i].trip.routeShortName}</li>
     <li class="hsl-destination">${stop.stoptimesWithoutPatterns[i].headsign}</li>
     <li class="hsl-time">${localeSpecificTime.replace('PM', '')}</li>
@@ -294,7 +291,6 @@ const myrtsiHSL = () => {
 
       hslContent.innerHTML += `
   <ul class="hsl-row">
-    <li class="hsl-stop">${stop.name}</li>
     <li class="hsl-line">${stop.stoptimesWithoutPatterns[i].trip.routeShortName}</li>
     <li class="hsl-destination">${stop.stoptimesWithoutPatterns[i].headsign}</li>
     <li class="hsl-time">${localeSpecificTime.replace('PM', '')}</li>
