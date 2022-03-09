@@ -167,7 +167,7 @@ header {
   animation: scroll-left 60s linear infinite;
   background-color: inherit;
 }
-
+/* kommenttti */
 @keyframes scroll-left {
   0% {
     transform: translateX(100%);
