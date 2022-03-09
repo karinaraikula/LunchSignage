@@ -19,8 +19,7 @@ setInterval(() => {
 
     timeEl.innerHTML = hour + '.' + minutes;
 
-    dateEl.innerHTML = days[day] + ', ' + date + '. ' + months[month
-    ];
+    dateEl.innerHTML = days[day] + '<br>' + date + '. ' + months[month];
 }, 1000);
 
 getWeatherData();

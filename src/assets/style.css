@@ -6,9 +6,13 @@
   /*font-family: 'Rubik', sans-serif;*/
 }
 
+#logo {
+  display: flex;
+  width: 300px;
+}
 body {
   max-height: 100vh;
-  background-color: #c7eaff;
+  background-color: #FCF6F4;
 }
 
 footer {
@@ -18,33 +22,72 @@ footer {
   bottom: 0;
 }
 
+.kortit {
+  margin: 1% 1% 2% 1%;
+}
 header {
   width: 100%;
   height: 15vh;
+  margin-bottom: 1%;
 }
 
 .content {
-max-height: 80vh;
+  display: flex;
+  flex-direction: row;
+  width: 50%;
+}
+.ala {
+  display: flex;
+  flex-direction: column;
+  height: 50%;
+}
+
+.yla {
+  display: flex;
+  flex-direction: column;
+  height: 50%;
+}
+.lounas {
+  display: flex;
+  background-color: #FFFAFA;
+  padding: 10px;
+  align-items: center;
+  flex-direction: row;
+  width: 50%;
+  overflow: scroll;
+  margin-right: 1%;
 }
 
 .main1 {
-  width: 55%;
+  width: 65%;
 }
 
 .main2 {
-  width: 45%;
+  width: 35%;
 }
 
+.date-container {
+  width: 25%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: #FFFAFA;
+  margin-bottom: 1%;
+  margin-right: 1%;
+
+}
 .hsl-div {
   width: 50%;
+  margin-right: 1%;
+  margin-bottom: 1%;
+  overflow: auto;
 }
 
 .weather-div {
-  width: 50%;
-}
-
-.border {
-  border: 1px solid black;
+  width: 25%;
+  background-color: #FFFAFA;
+  margin-bottom: 1%;
+  margin-right: 1%;
 }
 
 .flex {
@@ -79,8 +122,8 @@ max-height: 80vh;
 }
 
 .border {
-
-  border-radius: 10px;
+  border-radius: 20px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.40);
 }
 
 .justify {
@@ -145,27 +188,23 @@ max-height: 80vh;
   margin-left: 10%;
 }
 
-#menu {
-  padding: 5%;
-
-  overflow: scroll;
+.lounasitemit {
+  flex-direction: column;
 }
 
-.background {
-  background: linear-gradient(to right, #000428, #004e92);
+#lounasotsikko {
+  color:#FF7820;
+}
+#menu {
+  padding: 5%;
+  display: flex;
+  flex-wrap: wrap;
+  overflow: auto;
 }
 
 video {
   max-width: 100%;
   margin: 0;
-}
-
-.lounas {
-  color: #A9A9A9;
-  padding: 10px;
-  align-items: center;
-  max-height: fit-content;
-  overflow: scroll;
 }
 
 .carousel {
@@ -182,7 +221,6 @@ li {
   list-style-type: none;
   margin: 15px 0px;
   font-size: 1em;
-  color: white;
 }
 
 .title {
@@ -201,40 +239,36 @@ li {
   flex-wrap: wrap;
 }
 
-.date-container {
-  display: flex;
-  flex: 1;
-  flex-direction: column;
-  align-content: flex-end;
-
-}
-
 .place-container {
   display: flex;
   flex: 1;
   text-align: end;
   flex-direction: column;
+  align-items: center;
 }
 
 .logo-container {
   display: flex;
-  height: 150px;
+  height: 400px;
 }
 
 .time {
   display: flex;
   flex-direction: row;
   font-size: 70px;
+  color: #FF7820;
 }
 
 .date {
   display: flex;
   flex-direction: row;
+  text-align: center;
   font-size: 30px;
+  color: #000428;
 }
 
-#logo {
-  height: 50%;
+#lounaskuva {
+  height: 100%;
   position: relative;
   top: 0;
   left: 0;
@@ -242,8 +276,8 @@ li {
 }
 
 .city {
-  font-size: 20px;
-  margin-right: 10%;
+  font-size: 40px;
+  color: #FF7820;
 }
 
 .others {
@@ -257,14 +291,14 @@ li {
 }
 
 .w-icon {
-  width: 100px;
+  width: 150px;
 }
 
 .other {
   display: flex;
   flex: 1;
   margin: auto;
-  font-size: 40px;
+  font-size: 50px;
   justify-content: flex-start;
 }
 
@@ -287,7 +321,6 @@ li {
 }
 
 #hsl-logo {
-
   width: 150px;
   padding: 11px;
 }
@@ -331,11 +364,8 @@ li {
   padding-right: 8em;
 }
 
-
-
 .paikkabutton {
   background-color: #ccc;
-  /* Green */
   border: none;
   color: white;
   opacity: 0.8;
@@ -349,7 +379,7 @@ li {
 /* Dropdown Button */
 .dropbtn {
   background-color: transparent;
-  color: #A9A9A9;
+  color: #FF7820;
   padding: 16px;
   font-size: 2em;
   border: none;

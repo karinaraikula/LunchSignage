@@ -18,13 +18,11 @@
 </head>
 
 <body>
-    <div class="flex">
+    <div class="flex kortit">
+
         <div class="main1">
-            <header class="flex border">
-                <div class="date-container">
-                    <div class="time" id="time"></div>
-                    <div class="date" id="date"></div>
-                </div>
+            <header class="flex">
+                <div class="metropolia"><img src="./assets/kuvat/logo.png" id="logo"></div>
                 <div class="dropdown">
                     <button onclick="myFunction()" class="dropbtn" id="dropdown"></button>
                     <div id="myDropdown" class="dropdown-content">
@@ -37,37 +35,44 @@
             </header>
 
 
-            <div class="">
-                <section class="content flex border">
-
+            <div class="flex">
+                
+                <section class="content">
+                    <div class="yla">
+                    <div class="date-container border">
+                        <div class="time" id="time"></div>
+                        <div class="date" id="date"></div>
+                    </div>
                     <div class="weather-div weather border">
                         <div class="place-container">
                             <div id="city" class="city"></div>
                             <div class="others" id="current-weather-items"></div>
+                            
                         </div>
                     </div>
+                    </div>
+                    <div class="ala">
                     <div class="hsl-div hsl border">
                         <img id="hsl-logo" src="./assets/kuvat/HSL-logo.png" alt="hsl logo">
-
-
                         <ul id="hsl-menu">
                             <li class="line">LINJA</li>
                             <li class="dest">MÄÄRÄNPÄÄ</li>
                             <li class="aika">AIKA</li>
                         </ul>
 
-                        <div class="hsl-data">
-                        </div>
+                        <div class="hsl-data"></div>
 
                     </div>
-
+                </div>
                 </section>
-                <section class="flex border lounas">
-                    <div class="logo-container">
-                        <img src="./assets/kuvat/logo.png" alt="Metropolia logo" id="logo">
+                <section class=" border lounas">
+                    <div class="flex logo-container">
+                        <img src="./assets/kuvat/lounaskuva.jpg" alt="Kuva lounasvaihtoehdoista" id="lounaskuva">
                     </div>
+                    <div class="flex lounasitemit">
+                    <div id="lounasotsikko"><h1>Lounas tänään:</h1></div>
                     <div id="menu"></div>
-
+                    </div>
                 </section>
             </div>
         </div>
@@ -75,17 +80,17 @@
             <section class="mainos-section flex">
                 <article>
                     <video class="mainos border" autoplay muted loop>
-                        <source src="./assets/videos/kahvimainos.mp4" type="video/mp4">
+                        <source src="./assets/videos/kara1.mp4" type="video/mp4">
                     </video>
                 </article>
                 <article>
                     <video class="mainos border" autoplay muted loop>
-                        <source src="./assets/videos/kamamainos.mp4" type="video/mp4">
+                        <source src="./assets/videos/kara2.mp4" type="video/mp4">
                     </video>
                 </article>
                 <article>
                     <video class="mainos border" autoplay muted loop>
-                        <source src="./assets/videos/kesamainos.mp4" type="video/mp4">
+                        <source src="./assets/videos/yleinen.mp4" type="video/mp4">
                     </video>
                 </article>
             </section>
