@@ -201,7 +201,7 @@ const karamalmiHSL = () => {
     const hslContent = document.querySelector('.hsl-data');
     hslContent.innerHTML = ``;
 
-    console.log('hsl data', response.data.stop.stoptimesWithoutPatterns[0]);
+    //console.log('hsl data', response.data.stop.stoptimesWithoutPatterns[0]);
 
     for (let i = 0; i < 4; i++) {
       const stop = response.data.stop;
@@ -209,14 +209,14 @@ const karamalmiHSL = () => {
       let localeSpecificTime = time.toLocaleTimeString('fi-FI', { hour: 'numeric', minute: 'numeric' });
 
       
-      console.log(stop.name, stop.stoptimesWithoutPatterns[i].trip.routeShortName, stop.stoptimesWithoutPatterns[i].headsign, localeSpecificTime);
+      //console.log(stop.name, stop.stoptimesWithoutPatterns[i].trip.routeShortName, stop.stoptimesWithoutPatterns[i].headsign, localeSpecificTime);
 
       hslContent.innerHTML += `
-  <ul class="hsl-row">
-    <li class="hsl-line">${stop.stoptimesWithoutPatterns[i].trip.routeShortName}</li>
-    <li class="hsl-destination">${stop.stoptimesWithoutPatterns[i].headsign}</li>
-    <li class="hsl-time">${localeSpecificTime.replace('PM', '')}</li>
-  </ul>
+  <div class="flex" id="hsljuttu">
+    <div class="flex routename hsl-line">${stop.stoptimesWithoutPatterns[i].trip.routeShortName}</div>
+    <div class="flex headsign">${stop.stoptimesWithoutPatterns[i].headsign}</div>
+    <div class="flex hsltime ">${localeSpecificTime.replace('PM', '')}</div>
+  </div>
 `;
     };
   });
@@ -244,11 +244,11 @@ const arabiaHSL = () => {
       console.log(stop.name, stop.stoptimesWithoutPatterns[i].trip.routeShortName, stop.stoptimesWithoutPatterns[i].headsign, localeSpecificTime);
 
       hslContent.innerHTML += `
-  <ul class="hsl-row">
-    <li class="hsl-line">${stop.stoptimesWithoutPatterns[i].trip.routeShortName}</li>
-    <li class="hsl-destination">${stop.stoptimesWithoutPatterns[i].headsign}</li>
-    <li class="hsl-time">${localeSpecificTime.replace('PM', '')}</li>
-  </ul>
+      <div class="flex" id="hsljuttu">
+      <div class="flex routename hsl-line">${stop.stoptimesWithoutPatterns[i].trip.routeShortName}</div>
+      <div class="flex headsign">${stop.stoptimesWithoutPatterns[i].headsign}</div>
+      <div class="flex hsltime ">${localeSpecificTime.replace('PM', '')}</div>
+    </div>
 `;
     };
   });
@@ -277,11 +277,11 @@ const myllypuroHSL = () => {
       console.log(stop.name, stop.stoptimesWithoutPatterns[i].trip.routeShortName, stop.stoptimesWithoutPatterns[i].headsign, localeSpecificTime);
 
       hslContent.innerHTML += `
-  <ul class="hsl-row">
-    <li class="hsl-line">${stop.stoptimesWithoutPatterns[i].trip.routeShortName}</li>
-    <li class="hsl-destination">${stop.stoptimesWithoutPatterns[i].headsign}</li>
-    <li class="hsl-time">${localeSpecificTime.replace('PM', '')}</li>
-  </ul>
+      <div class="flex" id="hsljuttu">
+      <div class="flex routename hsl-line">${stop.stoptimesWithoutPatterns[i].trip.routeShortName}</div>
+      <div class="flex headsign">${stop.stoptimesWithoutPatterns[i].headsign}</div>
+      <div class="flex hsltime ">${localeSpecificTime.replace('PM', '')}</div>
+    </div>
 `;
     };
   });
@@ -310,11 +310,11 @@ const myrtsiHSL = () => {
       console.log(stop.name, stop.stoptimesWithoutPatterns[i].trip.routeShortName, stop.stoptimesWithoutPatterns[i].headsign, localeSpecificTime);
 
       hslContent.innerHTML += `
-  <ul class="hsl-row">
-    <li class="hsl-line">${stop.stoptimesWithoutPatterns[i].trip.routeShortName}</li>
-    <li class="hsl-destination">${stop.stoptimesWithoutPatterns[i].headsign}</li>
-    <li class="hsl-time">${localeSpecificTime.replace('PM', '')}</li>
-  </ul>
+      <div class="flex" id="hsljuttu">
+      <div class="flex routename hsl-line">${stop.stoptimesWithoutPatterns[i].trip.routeShortName}</div>
+      <div class="flex headsign">${stop.stoptimesWithoutPatterns[i].headsign}</div>
+      <div class="flex hsltime ">${localeSpecificTime.replace('PM', '')}</div>
+    </div>
 `;
     };
   });

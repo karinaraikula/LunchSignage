@@ -1,25 +1,142 @@
-@media only screen and (max-width: 800px) {
-    body {
-    }
+@media only screen and (min-width: 2000px) {
 
-    .row{
-        flex-direction: column;
-    }
-    .width33, .width34{
-      width: 90%;
-      margin: auto;
-    }
+  .scroll-left {
+    font-size: 4em;
+  }
+
+  h1 {
+    font-size: 4em;
+  }
+
+
+
+  #menu {
+    font-size: 2em;
+  }
+
+  .time {
+    font-size: 8em;
+    justify-content: center;
+  }
+
+  .date {
+    font-size: 4em;
+    justify-content: center;
 
   }
 
-  @media only screen and (max-width: 600px) {
+  .city {
+    font-size: 5em;
+  }
 
-    .row{
-        flex-direction: column;
-    }
-    .width33, .width34{
-      width: 100%;
-      margin: auto;
-    }
+  .other {
+    font-size: 6em;
+  }
+
+  .place-container {
+    align-items: center;
+    justify-content: center;
+  }
+
+  .w-icon {
+    width: 140%;
+    margin: -20%;
+    padding: -40%;
+  }
+
+  .icon {
+    justify-content: center;
+  }
+
+  .paikkabutton {
+
+    font-size: 4em;
+  }
+
+  .dropbtn {
+    margin-left: 0.4em;
+    margin-top: 1.15em;
+    font-size: 7em;
+    z-index: 10;
+  }
+
+  .dropdown-content {
+left: -50%;
 
   }
+
+  #hsl-logo {
+    width: 40%;
+  }
+
+  #hsl-menu {
+    font-size: 3.5em;
+  }
+  .aika{
+    margin-left: 1em;
+  }
+
+  .hsl-row {
+    font-size: 1em;
+  }
+
+  .metropolia {
+    width: 23%;
+  }
+
+  .mainos-section {
+
+    width: 95%;
+  }
+
+  .kortit {
+    margin: 2%;
+  }
+
+  .date-container {
+    margin-bottom: 4%;
+    margin-right: 4%;
+    align-items: center;
+
+  }
+
+  .weather-div {
+    margin-bottom: 4%;
+    margin-right: 4%;
+    align-items: center;
+  }
+
+  .hsl-div {
+    margin-right: 4%;
+  min-width: 96%;
+  }
+
+  .lounas {
+    margin-right: 0%;
+    height: 90vh;
+    margin-top: -21em;
+  }
+
+
+}
+
+.routename{
+  flex: 1;
+}
+.headsign{
+  flex:3;
+  margin-left: 1em;
+}
+.hsltime{
+  flex:1
+}
+
+#hsljuttu{
+  font-size: 3em;
+
+}
+
+.logo-container{
+  height: fit-content;
+  max-height:100%;
+}
