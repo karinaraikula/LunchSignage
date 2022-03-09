@@ -6,12 +6,9 @@
   /*font-family: 'Rubik', sans-serif;*/
 }
 
-#logo {
-  display: flex;
-  width: 100%;
-}
+
 body {
-  max-height: 100%;
+  max-height: 100vh;
   background-color: #FCF6F4;
 }
 
@@ -22,76 +19,62 @@ footer {
   bottom: 0;
 }
 
-.kortit {
-  margin: 1% 1% 2% 1%;
-}
 header {
   width: 100%;
   height: 15vh;
-  margin-bottom: 1%;
 }
 
 .content {
-  flex-direction: row;
-  width: 50%;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  width: 100%;
 }
 
-
-
-.yla {
-  display: flex;
-  flex-direction: row;
-  font-size: 1.2em;
-  height: 40%;
-}
-
-.ala {
-  display: flex;
-  flex-direction: row;
-  height: 60%;
-  font-size: 1.2em;
-  min-width: 100%;
+.kortit{
 }
 
 .lounas {
   background-color: #FFFAFA;
-  align-items: center;
+  align-items: flex-start;
   flex-direction: row;
-  overflow: scroll;
-  margin-right: 3%;
   width: 50%;
-  height: 100%;
+  max-height: 100%;
+  overflow: scroll;
 }
 
 
 .main1 {
-  width: 66%;
+  width: 33%;
+  max-height: 100vh;
+  justify-content: space-evenly;
 }
 
 .main2 {
-  width: 33%;
+  width: 66%;
+  max-height: 100vh;
+  justify-content: space-evenly;
+
+}
+
+.ala {
+  align-self: flex-end;
 }
 
 .date-container {
   align-items: center;
   background-color: #FFFAFA;
-  margin-bottom: 3%;
-  margin-right: 3%;
   width: 50%;
-
 }
 
 .weather-div {
   background-color: #FFFAFA;
-  margin-bottom: 3%;
-  margin-right: 3%;
   width: 50%;
 }
 
 .hsl-div {
-  margin-right: 3%;
-  margin-bottom: 3%;
-  overflow:hidden;
+  justify-content: center;
+  align-self: flex-end;
 }
 
 .flex {
@@ -99,14 +82,10 @@ header {
 }
 
 .mainos-section {
-  width: 100%;
-  float: right;
+  width: 50%;
 }
 
-.hsl-lista {
-  font-size: 1em;
-  float: left;
-}
+.hsl-lista {}
 
 .flex {
   display: flex;
@@ -152,11 +131,10 @@ header {
   font-family: Verdana, Geneva, Tahoma, sans-serif;
   font-size: 30px;
   align-items: center;
-  
+
 }
 
 .scroll-left p {
-  
   position: relative;
   margin: 0;
   transform: translateX(10%);
@@ -165,6 +143,7 @@ header {
   white-space: nowrap;
   align-self: center;
 }
+
 /* kommenttti */
 @keyframes scroll-left {
   0% {
@@ -182,13 +161,13 @@ header {
 }
 
 #lounasotsikko {
-  color:#FF7820;
+  color: #FF7820;
 }
+
 #menu {
   padding: 5%;
-  display: flex;
-  flex-wrap: wrap;
-  overflow: scroll;
+  max-height:100%;
+  overflow:scroll;
 }
 
 video {
@@ -203,13 +182,11 @@ video {
 
 h1 {
   padding: 5% 5% 0 5%;
-  font-size: 1.6em;
 }
 
 li {
   list-style-type: none;
   margin: 5px 0px;
-  font-size: 1em;
 }
 
 .title {
@@ -222,7 +199,6 @@ li {
 /*SÄÄN ja PVM leiska tästä eteenpäin*/
 
 .current-info {
-  margin: 10px 20px;
   display: flex;
   justify-content: space-between;
   flex-wrap: wrap;
@@ -237,14 +213,11 @@ li {
 }
 
 .logo-container {
-  display: flex;
-  height: 400px;
 }
 
 .time {
   display: flex;
   flex-direction: row;
-  font-size: 70px;
   color: #FF7820;
 }
 
@@ -252,18 +225,23 @@ li {
   display: flex;
   flex-direction: row;
   text-align: center;
-  font-size: 30px;
   color: #000428;
 }
 
 #lounaskuva {
   width: 100%;
+  height: fit-content;
   position: relative;
   margin: 0;
 }
+.metropolia{
+  width: 50%;
+}
+#logo {
+  width: 100%;
+}
 
 .city {
-  font-size: 40px;
   color: #FF7820;
 }
 
@@ -277,14 +255,13 @@ li {
 }
 
 .w-icon {
-  width: 150px;
+  width: 10%;
 }
 
 .other {
   display: flex;
   flex: 1;
   margin: auto;
-  font-size: 50px;
   justify-content: flex-start;
 }
 
@@ -293,7 +270,6 @@ li {
   background-color: rgb(0, 96, 163);
   padding: 30px;
   color: white;
-  height: 100%;
 }
 
 #hsl-menu li {
@@ -313,44 +289,23 @@ li {
   padding: 11px;
 }
 
-#hsl-menu{
+#hsl-menu {
   padding-bottom: 13px;
 }
-.hsl-row, .hsl-menu {
-  display: inline-flex;
-  width: fit-content;
-  height: fit-content;
-  justify-content: space-between;
-  width: max-content;
-}
+
 .dest {
   padding-left: 86px;
 }
-.aika{
+
+.aika {
   padding-left: 135px;
 }
-.line, .hsl-line {
-  width: 80px;
-  column-width: 50px;
-  margin: 0px 0px;
-}
 
-.dest, .hsl-destination {
-  column-width: 110px;
-  margin: 0px 0px;
-}
-
-.aika, .hsl-time {
-  column-width: 90px;
-  margin: 0px 0px;
-}
 
 .hsl-line {
   color: #ffff00;
 }
-.hsl-row>li {
-  padding-right: 6em;
-}
+
 
 .paikkabutton {
   background-color: #ccc;
@@ -361,7 +316,6 @@ li {
   text-align: center;
   text-decoration: none;
   display: inline-block;
-  font-size: 16px;
   border-radius: 15px;
   background-color: #FF7820;
   /*padding: 10px;*/
@@ -374,24 +328,17 @@ li {
   background-color: transparent;
   color: #FF7820;
   padding: 16px;
-  font-size: 3em;
   border: none;
   cursor: pointer;
-  position: absolute;
 
 }
 
-/* Dropdown button on hover & focus */
-.dropbtn:hover {
-
-
-}
 
 /* The container <div> - needed to position the dropdown content */
 .dropdown {
-  position: relative;
-  display: inline-block;
-
+  width: 50%;
+  display: flex;
+  align-items: flex-end;
 }
 
 /* Dropdown Content (Hidden by Default) */
@@ -399,9 +346,7 @@ li {
   display: none;
   position: relative;
   background-color: transparent;
-  max-width: 500px;
   z-index: 1;
-  left: 70%;
 }
 
 
@@ -414,27 +359,28 @@ li {
 .show {
   display: flex;
 }
-.dropdown-content li{
+
+.dropdown-content li {
   padding: 5px 10px;
 }
 
-.routename{
+.routename {
   flex: 1;
 }
-.headsign{
-  flex:3;
-  margin-left: 1em;
-}
-.hsltime{
-  flex:1
+
+.headsign {
+  flex: 3;
 }
 
-#hsljuttu{
-  font-size: 3em;
-
+.hsltime {
+  flex: 1
 }
 
-.logo-container{
+#hsljuttu {
+  font-size: 16px;
+}
+
+.logo-container {
   height: fit-content;
-  max-height:100%;
+  max-height: 10%;
 }
