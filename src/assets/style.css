@@ -38,6 +38,7 @@ header {
 .ala {
   display: flex;
   flex-direction: row;
+  font-size: 1.2em;
 }
 
 .yla {
