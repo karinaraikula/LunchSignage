@@ -145,38 +145,57 @@ const sodexoMylly = () => {
 
 document.getElementById('karamalmi-btn').addEventListener("click", function () {
   fazerKaramalmi(),
+  karamalmiHSL();
+  setInterval(() => {
     karamalmiHSL();
+  }, 30000);
+   
+    
 });
 document.getElementById('arabia-btn').addEventListener("click", function () {
   fazerArabia(),
+  arabiaHSL();
+  setInterval(() => {
     arabiaHSL();
+  }, 30000);
+    
 });
 
 document.getElementById('mylly-btn').addEventListener("click", function () {
   sodexoMylly(),
-    myllypuroHSL();
+  myllypuroHSL();
+  setInterval(() => {
+    karamalmiHSL();
+  }, 30000);
+    
 });
 
 document.getElementById('myrtsi-btn').addEventListener("click", function () {
   sodexoMyrtsi(),
-    myrtsiHSL();
+  myrtsiHSL();
+  setInterval(() => {
+    karamalmiHSL();
+  }, 30000);
+   
+    
 });
-
-
 
 const init = () => {
   createViewCarousel(0, 10);
   fazerKaramalmi();
   karamalmiHSL();
+  
 };
 
+  
 const karamalmiHSL = () => {
   fetchData(HSLData.apiUrl, {
     method: 'POST',
     headers: { 'Content-Type': 'application/graphql' },
     body: HSLData.getQueryForNextRidesByStopId(2132207),
 
-  }).then(response => {
+  })
+  .then(response => {
     // TODO: create separate render HSL data functions (in HSLData module maybe?)
     const stop = response.data.stop;
     const hslContent = document.querySelector('.hsl-data');
@@ -189,6 +208,7 @@ const karamalmiHSL = () => {
       let time = new Date((stop.stoptimesWithoutPatterns[i].realtimeArrival + stop.stoptimesWithoutPatterns[i].serviceDay) * 1000);
       let localeSpecificTime = time.toLocaleTimeString('fi-FI', { hour: 'numeric', minute: 'numeric' });
 
+      
       console.log(stop.name, stop.stoptimesWithoutPatterns[i].trip.routeShortName, stop.stoptimesWithoutPatterns[i].headsign, localeSpecificTime);
 
       hslContent.innerHTML += `

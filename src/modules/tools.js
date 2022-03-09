@@ -12,7 +12,7 @@ const getTodayIndex = () => {
   // NOTE: doesn't work on Sundays
   // TODO: ^ fix it!
   const weekDayIndex = new Date().getDay();
-  if(!weekDayIndex === 0){
+  if(!weekDayIndex == 0){
     console.log('day of week: ',weekDayIndex -1);
     return weekDayIndex -1;
   } else{
