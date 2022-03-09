@@ -1,6 +1,6 @@
 const citylocation = document.getElementById('city');
 
-const API_KEY2 ='f284944deaf6330fcff0faaaf0f8aa68';
+const API_KEY2 ='059e5417a3fc1a3a412c7ab508903751';
 
 getLocationData();
 function getLocationData () {

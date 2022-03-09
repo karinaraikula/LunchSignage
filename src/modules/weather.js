@@ -5,7 +5,7 @@ const currentWeatherItemsEl = document.getElementById('current-weather-items');
 const days = ['Sunnuntai', 'Maanantai', 'Tiistai', 'Keskiviikko', 'Torstai', 'Perjantai', 'Lauantai'];
 const months = ['tammikuuta', 'helmikuuta', 'maaliskuuta', 'huhtikuuta', 'toukokuuta', 'kesäkuuta', 'heinäkuuta', 'elokuuta', 'syyskuuta', 'lokakuuta', 'marraskuuta', 'joulukuuta'];
 
-const API_KEY = 'fcaad45fa4028c3aa51faecc8f25d3ab';
+const API_KEY = '13e568b3ff31436cc2ee296f443fb047';
 
 setInterval(() => {
     const time = new Date();
@@ -46,9 +46,9 @@ function showWeatherData(data) {
     data.daily.forEach((day, idx) => {
         if (idx == 0) {
             currentWeatherItemsEl.innerHTML = `
-            <div class="icon">
+            
             <img src="http://openweathermap.org/img/wn//${day.weather[0].icon}@4x.png" alt="weather icon" class="w-icon">
-            </div>
+       
             <div class="other"> ${Math.floor(day.temp.day)}&#176;C</div>
             `;
         };
