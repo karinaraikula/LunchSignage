@@ -1,4 +1,4 @@
-@media only screen and (min-width: 2000px) {
+@media only screen and (min-height: 1700px) {
 
   .scroll-left {
     font-size: 4em;
@@ -8,135 +8,62 @@
     font-size: 4em;
   }
 
-
-
   #menu {
     font-size: 2em;
   }
 
-  .time {
-    font-size: 8em;
-    justify-content: center;
+
+.time{
+  font-size: 8em !important;
+}
+.date{
+ font-size: 3em !important; 
+}
+.city{
+  font-size: 4em !important;
+}
+.others{
+  font-size: 6em !important;
+}
+
+  .yla {
+    height: 30vh !important;
   }
 
-  .date {
-    font-size: 4em;
-    justify-content: center;
-
-  }
-
-  .city {
-    font-size: 5em;
-  }
-
-  .other {
-    font-size: 6em;
-  }
-
-  .place-container {
-    align-items: center;
-    justify-content: center;
-  }
-
-  .w-icon {
-    width: 140%;
-    margin: -20%;
-    padding: -40%;
-  }
-
-  .icon {
-    justify-content: center;
-  }
-
+.lounas{
+  margin-bottom: 0.4% !important;
+}
   .paikkabutton {
-
-    font-size: 4em;
+    font-size: 4em !important;
   }
-
-  .dropbtn {
-    margin-left: 0.4em;
-    margin-top: 1.15em;
-    font-size: 7em;
-    z-index: 10;
-  }
-
-  .dropdown-content {
-left: -50%;
-
+  .dropbtn{
+    font-size: 6em !important;
+    margin-left: 0.5em !important;
   }
 
   #hsl-logo {
-    width: 40%;
+    width: 30% !important;
   }
 
   #hsl-menu {
     font-size: 3.5em;
   }
-  .aika{
-    margin-left: 1em;
+
+  .hsl-div{
+    padding: 5% 5% !important;
   }
 
-  .hsl-row {
-    font-size: 1em;
+  #hsljuttu {
+    font-size: 3em !important;
   }
 
-  .metropolia {
-    width: 23%;
+  .aika {
+    padding-left: 350px !important;
   }
 
-  .mainos-section {
-
-    width: 95%;
+  .scroll-left {
+font-size: 5em !important;
   }
-
-  .kortit {
-    margin: 2%;
-  }
-
-  .date-container {
-    margin-bottom: 4%;
-    margin-right: 4%;
-    align-items: center;
-
-  }
-
-  .weather-div {
-    margin-bottom: 4%;
-    margin-right: 4%;
-    align-items: center;
-  }
-
-  .hsl-div {
-    margin-right: 4%;
-  min-width: 96%;
-  }
-
-  .lounas {
-    margin-right: 0%;
-    height: 90vh;
-    margin-top: -21em;
-  }
-
 
 }
 
-.routename{
-  flex: 1;
-}
-.headsign{
-  flex:3;
-  margin-left: 1em;
-}
-.hsltime{
-  flex:1
-}
-
-#hsljuttu{
-  font-size: 3em;
-
-}
-
-.logo-container{
-  height: fit-content;
-  max-height:100%;
-}

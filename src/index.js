@@ -203,7 +203,7 @@ const karamalmiHSL = () => {
 
     //console.log('hsl data', response.data.stop.stoptimesWithoutPatterns[0]);
 
-    for (let i = 0; i < 4; i++) {
+    for (let i = 0; i < 5; i++) {
       const stop = response.data.stop;
       let time = new Date((stop.stoptimesWithoutPatterns[i].realtimeArrival + stop.stoptimesWithoutPatterns[i].serviceDay) * 1000);
       let localeSpecificTime = time.toLocaleTimeString('fi-FI', { hour: 'numeric', minute: 'numeric' });
@@ -236,7 +236,7 @@ const arabiaHSL = () => {
 
     console.log('hsl data', response.data.stop.stoptimesWithoutPatterns[0]);
 
-    for (let i = 0; i < 4; i++) {
+    for (let i = 0; i < 5; i++) {
       const stop = response.data.stop;
       let time = new Date((stop.stoptimesWithoutPatterns[i].realtimeArrival + stop.stoptimesWithoutPatterns[i].serviceDay) * 1000);
       let localeSpecificTime = time.toLocaleTimeString('fi-FI', { hour: 'numeric', minute: 'numeric' });
@@ -269,7 +269,7 @@ const myllypuroHSL = () => {
 
     console.log('hsl data', response.data.stop.stoptimesWithoutPatterns[0]);
 
-    for (let i = 0; i < 4; i++) {
+    for (let i = 0; i < 5; i++) {
       const stop = response.data.stop;
       let time = new Date((stop.stoptimesWithoutPatterns[i].realtimeArrival + stop.stoptimesWithoutPatterns[i].serviceDay) * 1000);
       let localeSpecificTime = time.toLocaleTimeString('fi-FI', { hour: 'numeric', minute: 'numeric' });
@@ -302,7 +302,7 @@ const myrtsiHSL = () => {
 
     console.log('hsl data', response.data.stop.stoptimesWithoutPatterns[0]);
 
-    for (let i = 0; i < 4; i++) {
+    for (let i = 0; i < 5; i++) {
       const stop = response.data.stop;
       let time = new Date((stop.stoptimesWithoutPatterns[i].realtimeArrival + stop.stoptimesWithoutPatterns[i].serviceDay) * 1000);
       let localeSpecificTime = time.toLocaleTimeString('fi-FI', { hour: 'numeric', minute: 'numeric' });
