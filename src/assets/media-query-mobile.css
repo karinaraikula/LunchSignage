@@ -1,0 +1,132 @@
+@media only screen and (max-width: 800px) {
+
+
+    /* hidden stuff */
+    .mainos-section, .scroll-left, .date-container, .city {
+        display: none;
+    }
+
+    /*******************/
+
+
+    body, header, .main1, .main2, .yla, .ala, .weather-div, .kortit, .metropolia {
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+    }
+
+    header {
+        height: 100px;
+        width: 60%;
+        display: flex;
+        flex-direction: row;
+        align-items: baseline;
+    }
+
+    #logo {
+        margin: 10px 5px;
+        width: 150px
+    }
+
+    .dropdow {
+        width: 40%;
+
+    }
+
+    .paikkabutton {
+        font-size: 1em;
+        padding: 5px 7px;
+    }
+
+    .dropdown-content li {
+        padding: 2px;
+    }
+
+    .main1 {
+        height: 50vh;
+        align-items: stretch;
+    }
+
+    .yla {
+        height: 10%;
+        position: absolute;
+        top: 0;
+        right: 0;
+        width: 6em;
+        margin: 0;
+    }
+
+    .ala {
+        height:100%;
+        align-items: flex-end;
+    }
+
+    .metropolia {
+        height: 15vh;
+    }
+
+    .content {
+        display: flex;
+    }
+
+    .weather-div {
+        display: flex;
+        width: 20%;
+        background-color: #FCF6F4;
+        border: none;
+        box-shadow: none;
+    }
+
+    .other {
+        display: flex;
+        margin: auto;
+        justify-content: flex-start;
+    }
+
+    .w-icon {
+        width: 100%;
+
+    }
+
+    .others {
+        flex-direction: row;
+        font-size: 2em;
+        margin-top: 2%;
+    }
+
+    .hsl-div {
+        max-width: 90%;
+        margin: auto;
+        justify-content: space-between;
+    }
+
+    .hsl-menu {}
+
+    #hsljuttu {}
+
+    .lounas {
+        width: 90%;
+        margin: auto;
+        min-height:min-content;
+    }
+
+    #lounaskuva {
+        width: 100%;
+    }
+
+    .korona2 {
+        border: 1px solid #FF7820;
+        display: flex;
+        flex-direction: column;
+        width: 90%;
+        padding: 10px;
+        margin: 20px auto;
+        border-radius: 20px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.40);
+    }
+
+    h2 {
+        color: #FF7820;
+    }
+}
+}

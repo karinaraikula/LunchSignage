@@ -1,4 +1,4 @@
-@media only screen and (min-height: 1700px) {
+@media only screen and (min-height: 1900px) {
 
   .scroll-left {
     font-size: 4em;
@@ -14,35 +14,36 @@
 
 
 .time{
-  font-size: 8em !important;
+  font-size: 8rem ;
 }
 .date{
- font-size: 3em !important; 
+ font-size: 3em ; 
 }
 .city{
-  font-size: 4em !important;
+  font-size: 4em ;
 }
 .others{
-  font-size: 6em !important;
+  font-size: 6em ;
 }
 
   .yla {
-    height: 30vh !important;
+    margin-top: 5%;
+    height: 30vh ;
   }
 
 .lounas{
-  margin-bottom: 0.4% !important;
+  margin-bottom: 0.4% ;
 }
   .paikkabutton {
-    font-size: 4em !important;
+    font-size: 4em ;
   }
   .dropbtn{
-    font-size: 6em !important;
-    margin-left: 0.5em !important;
+    font-size: 6em ;
+    margin-left: 0.5em ;
   }
 
   #hsl-logo {
-    width: 30% !important;
+    width: 30% ;
   }
 
   #hsl-menu {
@@ -50,15 +51,15 @@
   }
 
   .hsl-div{
-    padding: 5% 5% !important;
+    padding: 5% 5% ;
   }
 
   #hsljuttu {
-    font-size: 3em !important;
+    font-size: 3em ;
   }
 
   .aika {
-    padding-left: 350px !important;
+    padding-left: 320px ;
   }
 
   .scroll-left {

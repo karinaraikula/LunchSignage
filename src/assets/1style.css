@@ -1,4 +1,4 @@
-@media only screen and (max-height: 1700px) {
+
 * {
   margin: 0;
   padding: 0;
@@ -62,19 +62,21 @@ header {
 }
 
 .yla {
+  height: 20vh;
   width: 100%;
+  margin-top: 5%;
   flex-direction: row;
   justify-content: space-evenly;
   align-self: flex-start;
-  height: 15vh;
+
 }
 
 .ala {
   width: 100%;
   flex-direction: row;
   justify-content: center;
-  align-items: flex-end;
-  height: 50%;
+  align-items:center;
+  height: 80vh;
 
 }
 
@@ -94,12 +96,12 @@ header {
   justify-content: center;
   align-items: center;
   margin: 2%;
+  padding: 1%;
 }
 
 .hsl-div {
-  justify-content: center;
-  align-self: flex-end;
   width: 100%;
+  padding: 10px;
 }
 
 .flex {
@@ -109,6 +111,13 @@ header {
 .mainos-section {
   width: 50%;
   margin: 1% 1% 0 1%;
+}
+
+.box  {
+  display: flex;
+  width: 100%;
+  max-height: 100vh;
+
 }
 
 .hsl-lista {}
@@ -244,7 +253,7 @@ li {
   display: flex;
   flex-direction: row;
   color: #FF7820;
-  font-size: 4em;
+  font-size: 2rem;
 }
 
 .date {
@@ -296,19 +305,15 @@ li {
 /*HSL leiska*/
 .hsl {
   background-color: rgb(0, 96, 163);
-  padding: 30px;
-  color: white;
-}
+  padding: 0em 0em 1em 1em;
 
-#hsl-menu li {
-  justify-content: flex-start;
-  display: inline;
-  opacity: 0.5;
+  color: white;
 }
 
 #hsl-data {
   display: flex;
   flex-direction: row;
+  justify-content: space-between;
   box-sizing: border-box;
 }
 
@@ -318,16 +323,15 @@ li {
 }
 
 #hsl-menu {
-  padding-bottom: 13px;
-  justify-content: space-evenly;
+  padding: 0 2rem 1em 0;
+  display: flex;
+  justify-content:space-between;
 }
 
 .dest {
-  padding-left: 86px;
 }
 
 .aika {
-  padding-left: 135px;
 }
 
 
@@ -419,4 +423,7 @@ li {
   height: fit-content;
   max-height: 10%;
 }
+
+.korona, .korona2{
+  display: none;
 }
