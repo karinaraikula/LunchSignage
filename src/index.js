@@ -26,6 +26,7 @@ const renderKaramalmiMenu = (data, targetId) => {
   document.getElementById("dropdown").innerHTML = "Karamalmi";
 
 
+
 };
 
 const renderArabiaMenu = (data, targetId) => {
@@ -37,7 +38,7 @@ const renderArabiaMenu = (data, targetId) => {
     ulElement.appendChild(listElement);
   }
   //document.getElementById("kampus").innerHTML = "Arabia";
-  document.getElementById("dropdown").innerHTML = "Arabia";
+
 
 
 };
@@ -51,7 +52,7 @@ const renderMyrtsiMenu = (data, targetId) => {
     ulElement.appendChild(listElement);
   }
   //document.getElementById("kampus").innerHTML = "Myyrmäki";
-  document.getElementById("dropdown").innerHTML = "Myyrmäki";
+  //document.getElementById("dropdown").innerHTML = "Myyrmäki";
 
 
 
@@ -66,7 +67,7 @@ const renderMyllyMenu = (data, targetId) => {
     ulElement.appendChild(listElement);
   }
   //document.getElementById("kampus").innerHTML = "Myllypuro";
-  document.getElementById("dropdown").innerHTML = "Myllypuro";
+
 
 
 };
@@ -146,6 +147,7 @@ const sodexoMylly = () => {
 document.getElementById('karamalmi-btn').addEventListener("click", function () {
   fazerKaramalmi(),
     karamalmiHSL();
+    document.getElementById("dropdown").innerHTML = "Karamalmi";
   setInterval(() => {
     karamalmiHSL();
   }, 30000);
@@ -155,6 +157,7 @@ document.getElementById('karamalmi-btn').addEventListener("click", function () {
 document.getElementById('arabia-btn').addEventListener("click", function () {
   fazerArabia(),
     arabiaHSL();
+    document.getElementById("dropdown").innerHTML = "Arabia";
 
 
 });
@@ -162,6 +165,7 @@ document.getElementById('arabia-btn').addEventListener("click", function () {
 document.getElementById('mylly-btn').addEventListener("click", function () {
   sodexoMylly(),
     myllypuroHSL();
+    document.getElementById("dropdown").innerHTML = "Myllypuro";
 
 
 });
@@ -169,6 +173,7 @@ document.getElementById('mylly-btn').addEventListener("click", function () {
 document.getElementById('myrtsi-btn').addEventListener("click", function () {
   sodexoMyrtsi(),
     myrtsiHSL();
+    document.getElementById("dropdown").innerHTML = "Myyrmäki";
 
 
 
