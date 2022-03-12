@@ -23,7 +23,7 @@ const renderKaramalmiMenu = (data, targetId) => {
     ulElement.appendChild(listElement);
   }
   //document.getElementById("kampus").innerHTML = "Karamalmi";
-  document.getElementById("dropdown").innerHTML = "Karamalmi";
+  document.getElementById("dropdown").innerHTML = "Karamalmi"; //ilman tätä kampusvalikkonappi katoaa
 
 
 
