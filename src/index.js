@@ -177,7 +177,6 @@ document.getElementById('arabia-btn').addEventListener("click", function () {
 
   clearInterval(interval, weatherinterval);
 
-  interval = setInterval(function () {
     arabiaHSL();
     document.getElementById("dropdown").innerHTML = "Arabia";
 
@@ -195,7 +194,6 @@ document.getElementById('mylly-btn').addEventListener("click", function () {
 
   clearInterval(interval, weatherinterval);
 
-  interval = setInterval(function () {
     myllypuroHSL();
     document.getElementById("dropdown").innerHTML = "Myllypuro";
 
@@ -214,7 +212,6 @@ document.getElementById('myrtsi-btn').addEventListener("click", function () {
   weatherData.getMyrtsiWeatherData();
   clearInterval(interval);
 
-  interval = setInterval(function () {
     myrtsiHSL();
     document.getElementById("dropdown").innerHTML = "Myyrmäki";
 
@@ -230,7 +227,7 @@ const init = () => {
   createViewCarousel(0, 10);
   fazerKaramalmi();
   karamalmiHSL();
-
+  city.getEspooLocationData();
   weatherData.getKaraWeatherData();
 
   interval = setInterval(() => {
