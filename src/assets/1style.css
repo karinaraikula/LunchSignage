@@ -321,7 +321,9 @@ li {
   width: 150px;
   padding: 11px;
 }
-
+#pysakki {
+  font-size: 1.5em;
+}
 #hsl-menu {
   padding: 0 2rem 1em 0;
   display: flex;

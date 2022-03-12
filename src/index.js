@@ -39,8 +39,6 @@ const renderArabiaMenu = (data, targetId) => {
   }
   //document.getElementById("kampus").innerHTML = "Arabia";
 
-
-
 };
 
 const renderMyrtsiMenu = (data, targetId) => {
@@ -53,8 +51,6 @@ const renderMyrtsiMenu = (data, targetId) => {
   }
   //document.getElementById("kampus").innerHTML = "Myyrmäki";
   //document.getElementById("dropdown").innerHTML = "Myyrmäki";
-
-
 
 };
 
@@ -144,36 +140,87 @@ const sodexoMylly = () => {
   });
 };
 
+// Intervallit oli pakko määritellä var-muuttujaksi, sillä muuten ne eivät olisi näkyneet ja ollut muutettavissa jokaisen clicki-elementtilistenerin sisällä
+var interval;
+var weatherinterval;
+
 document.getElementById('karamalmi-btn').addEventListener("click", function () {
   fazerKaramalmi(),
     karamalmiHSL();
     document.getElementById("dropdown").innerHTML = "Karamalmi";
-  setInterval(() => {
+
+  fazerKaramalmi();
+  city.getEspooLocationData();
+  weatherData.getKaraWeatherData();
+  karamalmiHSL();
+
+  // tyhjennetään mahdolliset edelliset ajastimet, jottei ajastuksia pyöri päällekkäin
+  clearInterval(interval, weatherinterval);
+
+  // HSL-data päivittyy 30 sekunnin välein
+  interval = setInterval(() => {
     karamalmiHSL();
   }, 30000);
 
+  // Sää-data päivittyy tunnin välein
+  weatherinterval = setInterval(() => {
+    weatherData.getKaraWeatherData();
+  }, 3600000);
 
 });
+
 document.getElementById('arabia-btn').addEventListener("click", function () {
   fazerArabia(),
+  arabiaHSL();
+  city.getHelsinkiLocationData();
+  weatherData.getArabiaWeatherData();
+
+  clearInterval(interval, weatherinterval);
+
+  interval = setInterval(function () {
     arabiaHSL();
     document.getElementById("dropdown").innerHTML = "Arabia";
 
+  weatherinterval = setInterval(() => {
+    weatherData.getArabiaWeatherData();
+  }, 3600000);
 
 });
 
 document.getElementById('mylly-btn').addEventListener("click", function () {
   sodexoMylly(),
+  myllypuroHSL();
+  city.getHelsinkiLocationData();
+  weatherData.getMyllyWeatherData();
+
+  clearInterval(interval, weatherinterval);
+
+  interval = setInterval(function () {
     myllypuroHSL();
     document.getElementById("dropdown").innerHTML = "Myllypuro";
+
+
+  weatherinterval = setInterval(() => {
+    weatherData.getMyllyWeatherData();
+  }, 3600000);
 
 
 });
 
 document.getElementById('myrtsi-btn').addEventListener("click", function () {
   sodexoMyrtsi(),
+  myrtsiHSL();
+  city.getVantaaLocationData();
+  weatherData.getMyrtsiWeatherData();
+  clearInterval(interval);
+
+  interval = setInterval(function () {
     myrtsiHSL();
     document.getElementById("dropdown").innerHTML = "Myyrmäki";
+
+  weatherinterval = setInterval(() => {
+    weatherData.getMyrtsiWeatherData();
+  }, 3600000);
 
 
 
@@ -183,6 +230,16 @@ const init = () => {
   createViewCarousel(0, 10);
   fazerKaramalmi();
   karamalmiHSL();
+
+  weatherData.getKaraWeatherData();
+
+  interval = setInterval(() => {
+    karamalmiHSL();
+  }, 30000);
+
+  weatherinterval = setInterval(() => {
+    weatherData.getKaraWeatherData();
+  }, 3600000);
 
 };
 
@@ -199,8 +256,9 @@ const karamalmiHSL = () => {
       const stop = response.data.stop;
       const hslContent = document.querySelector('.hsl-data');
       hslContent.innerHTML = ``;
+      const pysakki = document.querySelector('#pysakki');
+      pysakki.innerHTML = stop.name;
 
-      //console.log('hsl data', response.data.stop.stoptimesWithoutPatterns[0]);
 
       for (let i = 0; i < 5; i++) {
         const stop = response.data.stop;
@@ -208,7 +266,7 @@ const karamalmiHSL = () => {
         let localeSpecificTime = time.toLocaleTimeString('fi-FI', { hour: 'numeric', minute: 'numeric' });
 
 
-        //console.log(stop.name, stop.stoptimesWithoutPatterns[i].trip.routeShortName, stop.stoptimesWithoutPatterns[i].headsign, localeSpecificTime);
+        console.log(stop.name, stop.stoptimesWithoutPatterns[i].trip.routeShortName, stop.stoptimesWithoutPatterns[i].headsign, localeSpecificTime);
 
         hslContent.innerHTML += `
   <div class="flex" id="hsljuttu">
@@ -232,8 +290,9 @@ const arabiaHSL = () => {
     const stop = response.data.stop;
     const hslContent = document.querySelector('.hsl-data');
     hslContent.innerHTML = ``;
+    const pysakki = document.querySelector('#pysakki');
+    pysakki.innerHTML = stop.name;
 
-    console.log('hsl data', response.data.stop.stoptimesWithoutPatterns[0]);
 
     for (let i = 0; i < 5; i++) {
       const stop = response.data.stop;
@@ -265,8 +324,10 @@ const myllypuroHSL = () => {
     const stop = response.data.stop;
     const hslContent = document.querySelector('.hsl-data');
     hslContent.innerHTML = ``;
+    const pysakki = document.querySelector('#pysakki');
+    pysakki.innerHTML = stop.name;
 
-    console.log('hsl data', response.data.stop.stoptimesWithoutPatterns[0]);
+
 
     for (let i = 0; i < 5; i++) {
       const stop = response.data.stop;
@@ -294,12 +355,11 @@ const myrtsiHSL = () => {
     body: HSLData.getQueryForNextRidesByStopId(4150296),
 
   }).then(response => {
-    // TODO: create separate render HSL data functions (in HSLData module maybe?)
     const stop = response.data.stop;
     const hslContent = document.querySelector('.hsl-data');
-    hslContent.innerHTML = ``;
+    const pysakki = document.querySelector('#pysakki');
+    pysakki.innerHTML = stop.name;
 
-    console.log('hsl data', response.data.stop.stoptimesWithoutPatterns[0]);
 
     for (let i = 0; i < 5; i++) {
       const stop = response.data.stop;
@@ -321,8 +381,4 @@ const myrtsiHSL = () => {
 
 
 init();
-
-
-
-
 
