@@ -177,8 +177,12 @@ document.getElementById('arabia-btn').addEventListener("click", function () {
 
   clearInterval(interval, weatherinterval);
 
+  arabiaHSL();
+  document.getElementById("dropdown").innerHTML = "Arabia";
+
+  interval = setInterval(() => {
     arabiaHSL();
-    document.getElementById("dropdown").innerHTML = "Arabia";
+  }, 30000);
 
   weatherinterval = setInterval(() => {
     weatherData.getArabiaWeatherData();
@@ -197,6 +201,10 @@ document.getElementById('mylly-btn').addEventListener("click", function () {
     myllypuroHSL();
     document.getElementById("dropdown").innerHTML = "Myllypuro";
 
+    interval = setInterval(() => {
+      myllypuroHSL();
+    }, 30000);
+
 
   weatherinterval = setInterval(() => {
     weatherData.getMyllyWeatherData();
@@ -210,10 +218,14 @@ document.getElementById('myrtsi-btn').addEventListener("click", function () {
   myrtsiHSL();
   city.getVantaaLocationData();
   weatherData.getMyrtsiWeatherData();
-  clearInterval(interval);
+  clearInterval(interval, weatherinterval);
 
     myrtsiHSL();
     document.getElementById("dropdown").innerHTML = "Myyrmäki";
+
+    interval = setInterval(() => {
+      myrtsiHSL();
+    }, 30000);
 
   weatherinterval = setInterval(() => {
     weatherData.getMyrtsiWeatherData();
@@ -229,7 +241,9 @@ const init = () => {
   karamalmiHSL();
   city.getEspooLocationData();
   weatherData.getKaraWeatherData();
-
+  
+  clearInterval(interval, weatherinterval);
+  
   interval = setInterval(() => {
     karamalmiHSL();
   }, 30000);
@@ -354,6 +368,7 @@ const myrtsiHSL = () => {
   }).then(response => {
     const stop = response.data.stop;
     const hslContent = document.querySelector('.hsl-data');
+    hslContent.innerHTML=``;
     const pysakki = document.querySelector('#pysakki');
     pysakki.innerHTML = stop.name;
 
