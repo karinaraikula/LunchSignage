@@ -3,17 +3,20 @@
         width: 100%;
         height: 50%;
         display: block;
+        margin: auto;
+
     }
 
     .ala {
         height: 50%;
+        margin: auto;
+        width: 100%;
+        justify-content: center;
     }
 
     .weather-div {
         display: flex;
         width: 100%;
-        margin: 1%;
-        padding: 1%;
     }
 
     .w-icon {
@@ -33,15 +36,30 @@
     }
 
     .hsl-div {
+        width: 100%;
         align-self: flex-end;
+        justify-content: center;
+        margin: auto;
+        margin-left: 0.5em;
     }
 
     .main1 {
         height: 100vh;
+        margin: auto;
+        justify-content: center;
     }
 
     .main2 {
         height: 100vh;
+        margin: auto;
+    }
+
+    .dropbtn {
+        padding: 1px;
+    }
+
+    .dropdown-content li {
+        padding: 2px;
     }
 
     .lounas {
@@ -74,7 +92,8 @@
         border-radius: 20px;
         box-shadow: 0 0 10px rgba(0, 0, 0, 0.40);
     }
-    h2{
+
+    h2 {
         color: #FF7820;
     }
 }
