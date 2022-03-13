@@ -8,11 +8,10 @@ import city from './modules/city';
 
 let lang = 'fi';
 
-
-
-
 /**
- * Renders menu courses on page
+ * Renders Karamalmi menu on page
+ * @param {Array} data - menudata
+ * @param {string} targetId - where menu is rendered
  */
 const renderKaramalmiMenu = (data, targetId) => {
   const ulElement = document.querySelector('#' + targetId);
@@ -22,13 +21,15 @@ const renderKaramalmiMenu = (data, targetId) => {
     listElement.textContent = item;
     ulElement.appendChild(listElement);
   }
-  //document.getElementById("kampus").innerHTML = "Karamalmi";
   document.getElementById("dropdown").innerHTML = "Karamalmi"; //ilman tätä kampusvalikkonappi katoaa
 
 
-
 };
-
+/**
+ * Renders Arabia menu on page
+ * @param {Array} data - menudata
+ * @param {string} targetId - where menu is rendered
+ */
 const renderArabiaMenu = (data, targetId) => {
   const ulElement = document.querySelector('#' + targetId);
   ulElement.innerHTML = '';
@@ -37,10 +38,13 @@ const renderArabiaMenu = (data, targetId) => {
     listElement.textContent = item;
     ulElement.appendChild(listElement);
   }
-  //document.getElementById("kampus").innerHTML = "Arabia";
 
 };
-
+/**
+ * Renders Myyrmaki menu on page
+ * @param {Array} data - menudata
+ * @param {string} targetId - where menu is rendered
+ */
 const renderMyrtsiMenu = (data, targetId) => {
   const ulElement = document.querySelector('#' + targetId);
   ulElement.innerHTML = '';
@@ -49,11 +53,13 @@ const renderMyrtsiMenu = (data, targetId) => {
     listElement.textContent = item;
     ulElement.appendChild(listElement);
   }
-  //document.getElementById("kampus").innerHTML = "Myyrmäki";
-  //document.getElementById("dropdown").innerHTML = "Myyrmäki";
 
 };
-
+/**
+ * Renders Myllypuro menu on page
+ * @param {Array} data - menudata
+ * @param {string} targetId - where menu is rendered
+ */
 const renderMyllyMenu = (data, targetId) => {
   const ulElement = document.querySelector('#' + targetId);
   ulElement.innerHTML = '';
@@ -62,7 +68,6 @@ const renderMyllyMenu = (data, targetId) => {
     listElement.textContent = item;
     ulElement.appendChild(listElement);
   }
-  //document.getElementById("kampus").innerHTML = "Myllypuro";
 };
 
 /**
@@ -86,25 +91,9 @@ const createViewCarousel = (activeView, duration) => {
 };
 
 
-
-/*
- * Toggle between en/fi
- * */
-/*
-const switchLanguage = () => {
-  if (lang == 'fi') {
-    lang = 'en';
-    console.log('lang is en');
-  } else {
-    lang = 'fi';
-    console.log('lang is fi');
-  }
-};
-//language change button
-document.getElementById('switch-lang').addEventListener('click', () => {
-  switchLanguage();
-});
-*/
+/**
+ * Fetches daily menu data
+ */
 const fazerKaramalmi = () => {
   fetchData(FazerData.fazerKaramalmiFiUrl, {}, 'fazer-php').then(data => {
     console.log('karamalmi', data);
@@ -117,6 +106,9 @@ const fazerKaramalmi = () => {
   });
 };
 
+/**
+ * Fetches daily menu data
+ */
 const fazerArabia = () => {
   fetchData(FazerData.fazerArabiaFiUrl, {}, 'fazer-php').then(data => {
     console.log('arabia', data);
@@ -128,6 +120,9 @@ const fazerArabia = () => {
   });
 };
 
+/**
+ * Fetches daily menu data
+ */
 const sodexoMyrtsi = () => {
   fetchData(SodexoData.sodexoMyrtsiDataUrl).then(data => {
     console.log('myyrmäki', data);
@@ -135,12 +130,14 @@ const sodexoMyrtsi = () => {
       document.getElementById('menu').innerHTML = 'Ei lounastarjoilua';
     }
     const courses = SodexoData.parseDayMenu(data.courses);
-
     renderMyrtsiMenu(courses, 'menu');
 
   });
 };
 
+/**
+ * Fetches daily menu data
+ */
 const sodexoMylly = () => {
   fetchData(SodexoData.sodexoMyllyDataUrl).then(data => {
     console.log('myllypuro', data);
@@ -152,19 +149,25 @@ const sodexoMylly = () => {
   });
 };
 
-// Intervallit oli pakko määritellä var-muuttujaksi, sillä muuten ne eivät olisi näkyneet ja ollut muutettavissa jokaisen clicki-elementtilistenerin sisällä
+/*
+Intervallit oli pakko määritellä var-muuttujaksi, 
+sillä muuten ne eivät olisi näkyneet 
+ja ollut muutettavissa jokaisen clicki-elementtilistenerin sisällä
+*/
 var interval;
 var weatherinterval;
 
+/**
+ * Event listener for campus button
+ * renders campus data
+ */
 document.getElementById('karamalmi-btn').addEventListener("click", function () {
   fazerKaramalmi(),
     karamalmiHSL();
   document.getElementById("dropdown").innerHTML = "Karamalmi";
 
-  fazerKaramalmi();
   city.getEspooLocationData();
   weatherData.getKaraWeatherData();
-  karamalmiHSL();
 
   // tyhjennetään mahdolliset edelliset ajastimet, jottei ajastuksia pyöri päällekkäin
   clearInterval(interval, weatherinterval);
@@ -181,6 +184,10 @@ document.getElementById('karamalmi-btn').addEventListener("click", function () {
 
 });
 
+/**
+ * Event listener for campus button
+ * renders campus data
+ */
 document.getElementById('arabia-btn').addEventListener("click", function () {
   fazerArabia(),
     arabiaHSL();
@@ -189,7 +196,6 @@ document.getElementById('arabia-btn').addEventListener("click", function () {
 
   clearInterval(interval, weatherinterval);
 
-  arabiaHSL();
   document.getElementById("dropdown").innerHTML = "Arabia";
 
   interval = setInterval(() => {
@@ -202,6 +208,10 @@ document.getElementById('arabia-btn').addEventListener("click", function () {
 
 });
 
+/**
+ * Event listener for campus button
+ * renders campus data
+ */
 document.getElementById('mylly-btn').addEventListener("click", function () {
   sodexoMylly(),
     myllypuroHSL();
@@ -210,7 +220,6 @@ document.getElementById('mylly-btn').addEventListener("click", function () {
 
   clearInterval(interval, weatherinterval);
 
-  myllypuroHSL();
   document.getElementById("dropdown").innerHTML = "Myllypuro";
 
   interval = setInterval(() => {
@@ -225,6 +234,10 @@ document.getElementById('mylly-btn').addEventListener("click", function () {
 
 });
 
+/**
+ * Event listener for campus button
+ * renders campus data
+ */
 document.getElementById('myrtsi-btn').addEventListener("click", function () {
   sodexoMyrtsi(),
     myrtsiHSL();
@@ -232,7 +245,6 @@ document.getElementById('myrtsi-btn').addEventListener("click", function () {
   weatherData.getMyrtsiWeatherData();
   clearInterval(interval, weatherinterval);
 
-  myrtsiHSL();
   document.getElementById("dropdown").innerHTML = "Myyrmäki";
 
   interval = setInterval(() => {
@@ -242,11 +254,12 @@ document.getElementById('myrtsi-btn').addEventListener("click", function () {
   weatherinterval = setInterval(() => {
     weatherData.getMyrtsiWeatherData();
   }, 3600000);
-
-
-
 });
 
+
+/**
+ * Initialise the app
+ */
 const init = () => {
   createViewCarousel(0, 10);
   fazerKaramalmi();
@@ -266,7 +279,10 @@ const init = () => {
 
 };
 
-
+/*
+* Fetch HSL data from api
+* InnerHTML to set HSL data on page when called
+*/
 const karamalmiHSL = () => {
   fetchData(HSLData.apiUrl, {
     method: 'POST',
@@ -275,19 +291,16 @@ const karamalmiHSL = () => {
 
   })
     .then(response => {
-      // TODO: create separate render HSL data functions (in HSLData module maybe?)
       const stop = response.data.stop;
       const hslContent = document.querySelector('.hsl-data');
       hslContent.innerHTML = ``;
       const pysakki = document.querySelector('#pysakki');
       pysakki.innerHTML = stop.name;
 
-
       for (let i = 0; i < 5; i++) {
         const stop = response.data.stop;
         let time = new Date((stop.stoptimesWithoutPatterns[i].realtimeArrival + stop.stoptimesWithoutPatterns[i].serviceDay) * 1000);
         let localeSpecificTime = time.toLocaleTimeString('fi-FI', { hour: 'numeric', minute: 'numeric' });
-
 
         console.log(stop.name, stop.stoptimesWithoutPatterns[i].trip.routeShortName, stop.stoptimesWithoutPatterns[i].headsign, localeSpecificTime);
 
@@ -302,6 +315,10 @@ const karamalmiHSL = () => {
     });
 };
 
+/*
+* Fetch HSL data from api
+* InnerHTML to set HSL data on page when called
+*/
 const arabiaHSL = () => {
   fetchData(HSLData.apiUrl, {
     method: 'POST',
@@ -309,13 +326,11 @@ const arabiaHSL = () => {
     body: HSLData.getQueryForNextRidesByStopId(1230104),
 
   }).then(response => {
-    // TODO: create separate render HSL data functions (in HSLData module maybe?)
     const stop = response.data.stop;
     const hslContent = document.querySelector('.hsl-data');
     hslContent.innerHTML = ``;
     const pysakki = document.querySelector('#pysakki');
     pysakki.innerHTML = stop.name;
-
 
     for (let i = 0; i < 5; i++) {
       const stop = response.data.stop;
@@ -335,6 +350,10 @@ const arabiaHSL = () => {
   });
 };
 
+/*
+* Fetch HSL data from api
+* InnerHTML to set HSL data on page when called
+*/
 const myllypuroHSL = () => {
 
   fetchData(HSLData.apiUrl, {
@@ -343,14 +362,11 @@ const myllypuroHSL = () => {
     body: HSLData.getQueryForNextRidesByStopId(1454112),
 
   }).then(response => {
-    // TODO: create separate render HSL data functions (in HSLData module maybe?)
     const stop = response.data.stop;
     const hslContent = document.querySelector('.hsl-data');
     hslContent.innerHTML = ``;
     const pysakki = document.querySelector('#pysakki');
     pysakki.innerHTML = stop.name;
-
-
 
     for (let i = 0; i < 5; i++) {
       const stop = response.data.stop;
@@ -370,6 +386,10 @@ const myllypuroHSL = () => {
   });
 };
 
+/*
+* Fetch HSL data from api
+* InnerHTML to set HSL data on page when called
+*/
 const myrtsiHSL = () => {
 
   fetchData(HSLData.apiUrl, {
@@ -384,7 +404,6 @@ const myrtsiHSL = () => {
     const pysakki = document.querySelector('#pysakki');
     pysakki.innerHTML = stop.name;
 
-
     for (let i = 0; i < 5; i++) {
       const stop = response.data.stop;
       let time = new Date((stop.stoptimesWithoutPatterns[i].realtimeArrival + stop.stoptimesWithoutPatterns[i].serviceDay) * 1000);
@@ -403,6 +422,27 @@ const myrtsiHSL = () => {
   });
 };
 
-
 init();
 
+
+
+
+//Language switch, not currently used, but can be developed from here
+/*
+ * Toggle between en/fi
+ * */
+/*
+const switchLanguage = () => {
+  if (lang == 'fi') {
+    lang = 'en';
+    console.log('lang is en');
+  } else {
+    lang = 'fi';
+    console.log('lang is fi');
+  }
+};
+//language change button
+document.getElementById('switch-lang').addEventListener('click', () => {
+  switchLanguage();
+});
+*/

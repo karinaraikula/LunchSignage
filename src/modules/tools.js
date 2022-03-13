@@ -4,13 +4,9 @@
 const todayISODate = new Date().toISOString().split('T')[0];
 
 /**
- * TODO: add description
- *
- * @returns
+ * @returns weekDayIndex that is used to identify menu today
  */
 const getTodayIndex = () => {
-  // NOTE: doesn't work on Sundays
-  // TODO: ^ fix it!
   const weekDayIndex = new Date().getDay();
   if(!weekDayIndex == 0){
     console.log('day of week: ',weekDayIndex -1);

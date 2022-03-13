@@ -1,8 +1,9 @@
 const citylocation = document.getElementById('city');
-
 const API_KEY2 ='9ed765d6ed3c9ff04c739ca0b78dfa41';
 
-
+/**
+ * Coordinates to find Espoo location
+ */
 function getEspooLocationData () {
     navigator.geolocation.getCurrentPosition((success) => {
         
@@ -21,7 +22,9 @@ function getEspooLocationData () {
     });
 };
 
-
+/**
+ * Coordinates to find Helsinki location
+ */
 function getHelsinkiLocationData () {
     navigator.geolocation.getCurrentPosition((success) => {
         
@@ -39,7 +42,9 @@ function getHelsinkiLocationData () {
         
     });
 };
-
+/**
+ * Coordinates to find Vantaa location
+ */
 function getVantaaLocationData () {
     navigator.geolocation.getCurrentPosition((success) => {
         // Vantaan koordinaatit Myyrmäen sään paikkakuntatietoa varten
