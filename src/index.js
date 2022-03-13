@@ -63,9 +63,6 @@ const renderMyllyMenu = (data, targetId) => {
     ulElement.appendChild(listElement);
   }
   //document.getElementById("kampus").innerHTML = "Myllypuro";
-
-
-
 };
 
 /**
@@ -111,14 +108,21 @@ document.getElementById('switch-lang').addEventListener('click', () => {
 const fazerKaramalmi = () => {
   fetchData(FazerData.fazerKaramalmiFiUrl, {}, 'fazer-php').then(data => {
     console.log('karamalmi', data);
+    if (data.courses == null) {
+      document.getElementById('menu').innerHTML = 'Ei lounastarjoilua';
+    }
     const courses = FazerData.parseDayMenu(data.LunchMenus, getTodayIndex());
     renderKaramalmiMenu(courses, 'menu');
+
   });
 };
 
 const fazerArabia = () => {
   fetchData(FazerData.fazerArabiaFiUrl, {}, 'fazer-php').then(data => {
     console.log('arabia', data);
+    if (data.courses == null) {
+      document.getElementById('menu').innerHTML = 'Ei lounastarjoilua';
+    }
     const courses = FazerData.parseDayMenu(data.LunchMenus, getTodayIndex());
     renderArabiaMenu(courses, 'menu');
   });
@@ -127,14 +131,22 @@ const fazerArabia = () => {
 const sodexoMyrtsi = () => {
   fetchData(SodexoData.sodexoMyrtsiDataUrl).then(data => {
     console.log('myyrmäki', data);
+    if (data.courses == null) {
+      document.getElementById('menu').innerHTML = 'Ei lounastarjoilua';
+    }
     const courses = SodexoData.parseDayMenu(data.courses);
+
     renderMyrtsiMenu(courses, 'menu');
+
   });
 };
 
 const sodexoMylly = () => {
   fetchData(SodexoData.sodexoMyllyDataUrl).then(data => {
     console.log('myllypuro', data);
+    if (data.courses == null) {
+      document.getElementById('menu').innerHTML = 'Ei lounastarjoilua';
+    }
     const courses = SodexoData.parseDayMenu(data.courses);
     renderMyllyMenu(courses, 'menu');
   });
@@ -147,7 +159,7 @@ var weatherinterval;
 document.getElementById('karamalmi-btn').addEventListener("click", function () {
   fazerKaramalmi(),
     karamalmiHSL();
-    document.getElementById("dropdown").innerHTML = "Karamalmi";
+  document.getElementById("dropdown").innerHTML = "Karamalmi";
 
   fazerKaramalmi();
   city.getEspooLocationData();
@@ -171,7 +183,7 @@ document.getElementById('karamalmi-btn').addEventListener("click", function () {
 
 document.getElementById('arabia-btn').addEventListener("click", function () {
   fazerArabia(),
-  arabiaHSL();
+    arabiaHSL();
   city.getHelsinkiLocationData();
   weatherData.getArabiaWeatherData();
 
@@ -192,18 +204,18 @@ document.getElementById('arabia-btn').addEventListener("click", function () {
 
 document.getElementById('mylly-btn').addEventListener("click", function () {
   sodexoMylly(),
-  myllypuroHSL();
+    myllypuroHSL();
   city.getHelsinkiLocationData();
   weatherData.getMyllyWeatherData();
 
   clearInterval(interval, weatherinterval);
 
-    myllypuroHSL();
-    document.getElementById("dropdown").innerHTML = "Myllypuro";
+  myllypuroHSL();
+  document.getElementById("dropdown").innerHTML = "Myllypuro";
 
-    interval = setInterval(() => {
-      myllypuroHSL();
-    }, 30000);
+  interval = setInterval(() => {
+    myllypuroHSL();
+  }, 30000);
 
 
   weatherinterval = setInterval(() => {
@@ -215,17 +227,17 @@ document.getElementById('mylly-btn').addEventListener("click", function () {
 
 document.getElementById('myrtsi-btn').addEventListener("click", function () {
   sodexoMyrtsi(),
-  myrtsiHSL();
+    myrtsiHSL();
   city.getVantaaLocationData();
   weatherData.getMyrtsiWeatherData();
   clearInterval(interval, weatherinterval);
 
-    myrtsiHSL();
-    document.getElementById("dropdown").innerHTML = "Myyrmäki";
+  myrtsiHSL();
+  document.getElementById("dropdown").innerHTML = "Myyrmäki";
 
-    interval = setInterval(() => {
-      myrtsiHSL();
-    }, 30000);
+  interval = setInterval(() => {
+    myrtsiHSL();
+  }, 30000);
 
   weatherinterval = setInterval(() => {
     weatherData.getMyrtsiWeatherData();
@@ -241,9 +253,9 @@ const init = () => {
   karamalmiHSL();
   city.getEspooLocationData();
   weatherData.getKaraWeatherData();
-  
+
   clearInterval(interval, weatherinterval);
-  
+
   interval = setInterval(() => {
     karamalmiHSL();
   }, 30000);
@@ -368,7 +380,7 @@ const myrtsiHSL = () => {
   }).then(response => {
     const stop = response.data.stop;
     const hslContent = document.querySelector('.hsl-data');
-    hslContent.innerHTML=``;
+    hslContent.innerHTML = ``;
     const pysakki = document.querySelector('#pysakki');
     pysakki.innerHTML = stop.name;
 
